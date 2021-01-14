@@ -1,4 +1,4 @@
 # AppBots
 IIT2019053, IIT2019039, IIT2019059, IIT2019060
 
-Softwaer Engineering
+Software Engineering
