@@ -20,6 +20,7 @@ public class WelcomeActivity extends AppCompatActivity {
         welcomeBinding=ActivityWelcomeBinding.inflate(LayoutInflater.from(this));
         setContentView(welcomeBinding.getRoot());
         welcomeBinding.proceedAdminBtn.setOnClickListener(this::onClick);
+        welcomeBinding.proceedGuestBtn.setOnClickListener(this::onClick);
     }
 
     private void onClick(View view) {
