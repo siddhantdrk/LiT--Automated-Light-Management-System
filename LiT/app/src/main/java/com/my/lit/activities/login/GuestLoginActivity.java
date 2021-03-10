@@ -1,4 +1,4 @@
-package com.my.lit.activities;
+package com.my.lit.activities.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.my.lit.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class GuestLoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
