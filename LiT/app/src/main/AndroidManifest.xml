@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiT">
-        <activity android:name=".activities.login.GuestLoginActivity"></activity>
+        <activity android:name=".activities.DashBoard"></activity>
+        <activity android:name=".activities.login.GuestLoginActivity" />
         <activity android:name=".activities.login.AdminLoginActivity" />
         <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
@@ -19,8 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.MainActivity">
-        </activity>
+        <activity android:name=".activities.MainActivity"></activity>
     </application>
 
 </manifest>
