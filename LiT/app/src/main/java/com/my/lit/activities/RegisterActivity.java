@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(activityRegisterBinding.getRoot());
 
         activityRegisterBinding.signUpRegister.setOnClickListener(this::onClick);
-        activityRegisterBinding.signUpRegister.setOnClickListener(this::onClick);
+        activityRegisterBinding.signIn.setOnClickListener(this::onClick);
         mProgress = new ProgressDialog(this);
     }
 
