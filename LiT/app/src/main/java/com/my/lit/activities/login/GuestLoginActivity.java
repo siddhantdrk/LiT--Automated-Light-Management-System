@@ -38,6 +38,7 @@ public class GuestLoginActivity extends AppCompatActivity {
             case R.id.SignUp:
                 Intent intent = new Intent(GuestLoginActivity.this , RegisterActivity.class);
                 view.getContext().startActivity(intent);
+                break;
             case R.id.signIn:
                 mProgress.setTitle("Logging in");
                 mProgress.setMessage("Please wait while we fetching your login account");
@@ -50,6 +51,7 @@ public class GuestLoginActivity extends AppCompatActivity {
                         view.getContext().startActivity(intent1);
                     }
                 }, 3000);
+            break;
         }
     }
 }

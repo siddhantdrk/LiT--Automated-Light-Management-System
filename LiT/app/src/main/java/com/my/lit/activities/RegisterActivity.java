@@ -46,9 +46,11 @@ public class RegisterActivity extends AppCompatActivity {
                         view.getContext().startActivity(intent);
                     }
                 }, 3000);
+                break;
             case R.id.signIn:
                 Intent intent1 = new Intent(RegisterActivity.this , GuestLoginActivity.class);
                 view.getContext().startActivity(intent1);
+                break;
         }
     }
 }
