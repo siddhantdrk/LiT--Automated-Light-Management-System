@@ -22,19 +22,18 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-
         activityRegisterBinding = ActivityRegisterBinding.inflate(LayoutInflater.from(this));
         setContentView(activityRegisterBinding.getRoot());
-
-        activityRegisterBinding.signUpRegister.setOnClickListener(this::onClick);
-        activityRegisterBinding.signIn.setOnClickListener(this::onClick);
         mProgress = new ProgressDialog(this);
+        activityRegisterBinding.registerBtn.setOnClickListener(this::onClick);
+        activityRegisterBinding.signIn.setOnClickListener(this::onClick);
     }
 
     private void onClick(View view) {
         switch (view.getId()){
-            case R.id.signUp_register:
+            case R.id.registerBtn:
+                Intent intent = new Intent(RegisterActivity.this , DashBoard.class);
+                view.getContext().startActivity(intent);
                 mProgress.setTitle("Registering user");
                 mProgress.setMessage("Please wait while we Register you");
                 mProgress.setCanceledOnTouchOutside(false);

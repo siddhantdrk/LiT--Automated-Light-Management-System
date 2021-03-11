@@ -29,7 +29,7 @@ public class GuestLoginActivity extends AppCompatActivity {
         setContentView(activityLoginBinding.getRoot());
 
         activityLoginBinding.SignUp.setOnClickListener(this::onClick);
-        activityLoginBinding.signInButton.setOnClickListener(this::onClick);
+        activityLoginBinding.LogInBtn.setOnClickListener(this::onClick);
         mProgress = new ProgressDialog(this);
     }
 
@@ -39,7 +39,7 @@ public class GuestLoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(GuestLoginActivity.this , RegisterActivity.class);
                 view.getContext().startActivity(intent);
                 break;
-            case R.id.signIn_button:
+            case R.id.LogInBtn:
                 mProgress.setTitle("Logging in");
                 mProgress.setMessage("Please wait while we fetching your login account");
                 mProgress.setCanceledOnTouchOutside(false);
@@ -51,9 +51,9 @@ public class GuestLoginActivity extends AppCompatActivity {
                         view.getContext().startActivity(intent1);
                     }
                 }, 3000);
-                        Intent intent1 = new Intent(GuestLoginActivity.this , DashBoard.class);
-                        view.getContext().startActivity(intent1);
-            break;
+                Intent intent1 = new Intent(GuestLoginActivity.this , DashBoard.class);
+                view.getContext().startActivity(intent1);
+                break;
         }
     }
 }

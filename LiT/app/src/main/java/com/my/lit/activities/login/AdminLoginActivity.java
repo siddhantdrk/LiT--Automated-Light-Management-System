@@ -23,7 +23,7 @@ public class AdminLoginActivity extends AppCompatActivity {
         setContentView(activityLoginBinding.getRoot());
 
         activityLoginBinding.SignUp.setOnClickListener(this::onClick);
-        activityLoginBinding.signInButton.setOnClickListener(this::onClick);
+        activityLoginBinding.LogInBtn.setOnClickListener(this::onClick);
 
     }
 
