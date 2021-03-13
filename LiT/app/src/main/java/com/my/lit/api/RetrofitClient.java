@@ -10,7 +10,7 @@ public class RetrofitClient {
     private static Retrofit retrofit;
 
     private RetrofitClient() {
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL_TEMP)
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory
                         .create()).build();
     }
