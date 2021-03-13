@@ -4,6 +4,7 @@ const env = require('dotenv');
 const mongoose= require('mongoose');
 const router= require('./routes');
 const path = require('path');
+const cors= require('cors');
 
 env.config();
 app.use(express.json());
@@ -18,6 +19,8 @@ mongoose.connect(localMongo,
 ).then(() => {
     console.log('Database Connected');
 });
+
+app.use(cors());
 
 app.use('/',router);
 app.get('/', (req, res) => {
