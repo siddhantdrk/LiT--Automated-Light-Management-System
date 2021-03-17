@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "32048142942",
+    "project_id": "litapp-11b75",
+    "storage_bucket": "litapp-11b75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32048142942:android:a19d140cc99810d8c2b2cf",
+        "android_client_info": {
+          "package_name": "com.my.lit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32048142942-6v4lcin94auqh789ossb6steus0giksb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7PmbgqT-zqgfJ-HZy-DTQbbNgtq1E_b0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32048142942-6v4lcin94auqh789ossb6steus0giksb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

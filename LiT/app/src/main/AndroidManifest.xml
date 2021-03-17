@@ -8,15 +8,16 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:networkSecurityConfig="@xml/network_config"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.LiT">
-        <activity android:name=".activities.dashboard.GuestDashBoardActivity"></activity>
+        android:theme="@style/Theme.LiT"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activities.dashboard.AdminDashBoard"></activity>
+        <activity android:name=".activities.dashboard.GuestDashBoardActivity" />
         <activity android:name=".activities.login.GuestLoginActivity" />
         <activity android:name=".activities.login.AdminLoginActivity" />
-        <activity android:name=".activities.WelcomeActivity"></activity>
+        <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.register.GuestRegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity"></activity>
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

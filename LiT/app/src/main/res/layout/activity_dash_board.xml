@@ -24,7 +24,8 @@
             android:text="View Lightening"
             app:backgroundTint="#B6B5B5"
             android:textColor="@color/black"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="32dp"
+            style="@style/Theme.MaterialComponents.DayNight"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/edit_lightening"
