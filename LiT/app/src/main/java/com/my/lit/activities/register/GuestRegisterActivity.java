@@ -55,13 +55,13 @@ public class GuestRegisterActivity extends AppCompatActivity {
         String email = activityRegisterBinding.signUpEmail.getText().toString().trim();
         String password = activityRegisterBinding.signUpPassword.getText().toString().trim();
         String confirmPassword = activityRegisterBinding.signUpConfirmPassword.getText().toString().trim();
-        Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, "sid", "khobragade");
+        Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister("siddhantdrk@gmail.com", "hardik0405", "Hardik", "Bajaj");
         registerResponseCall.enqueue(new Callback<UserRegisterResponse>() {
             @Override
             public void onResponse(Call<UserRegisterResponse> call, Response<UserRegisterResponse> response) {
                 mProgress.dismiss();
+                UserRegisterResponse userRegisterResponse = response.body();
                 if (response.isSuccessful()) {
-                    UserRegisterResponse userRegisterResponse = response.body();
                     if (response.code() == 400) {
                         Toast.makeText(GuestRegisterActivity.this, userRegisterResponse.getError(), Toast.LENGTH_SHORT).show();
                     } else if (response.code() == 200) {
@@ -70,7 +70,7 @@ public class GuestRegisterActivity extends AppCompatActivity {
                         finish();
                     }
                 } else {
-                    Toast.makeText(GuestRegisterActivity.this, "Unsuccessful" + response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GuestRegisterActivity.this, "Unsuccessful " + response.code() + response.raw(), Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -10,7 +10,6 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface UserServices {
-    @FormUrlEncoded
     @POST("user/signup")
      Call<UserRegisterResponse>userRegister(
             @Field("email") String email,
