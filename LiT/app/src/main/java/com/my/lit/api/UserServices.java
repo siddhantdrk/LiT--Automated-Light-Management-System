@@ -37,6 +37,13 @@ public interface UserServices {
     );
 
     @FormUrlEncoded
+    @POST("login")
+    Call<loginRegisterResponse> login(
+            @Field("email") String email,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
     @POST("admin/signin")
     Call<AdminLoginResponse> adminLogin(
             @Field("email") String email,
