@@ -56,7 +56,7 @@ public class GuestRegisterActivity2 extends AppCompatActivity {
         String email = activityRegisterBinding.signUpEmail.getText().toString().trim();
         String password = activityRegisterBinding.signUpPassword.getText().toString().trim();
         String confirmPassword = activityRegisterBinding.signUpConfirmPassword.getText().toString().trim();
-        Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, password, "rahul","dev");
+        Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister("hardik.bajaj.04@gmail.com", "hardik0405", "Hardik","Bajaj");
         registerResponseCall.enqueue(new Callback<UserRegisterResponse>() {
             @Override
             public void onResponse(Call<UserRegisterResponse> call, Response<UserRegisterResponse> response) {
