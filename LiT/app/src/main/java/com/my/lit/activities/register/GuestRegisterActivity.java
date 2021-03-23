@@ -52,12 +52,6 @@ public class GuestRegisterActivity extends AppCompatActivity {
         }
     }
 
-    private void invalidate(String password,String confirmPassword){
-        if(!password.equals(confirmPassword)){
-            Toast.makeText(GuestRegisterActivity.this,"password does not match",Toast.LENGTH_LONG).show();
-        }
-    }
-
     private void register() {
         mProgress.setTitle("Registering user");
         mProgress.setMessage("Please wait while we Register you");
