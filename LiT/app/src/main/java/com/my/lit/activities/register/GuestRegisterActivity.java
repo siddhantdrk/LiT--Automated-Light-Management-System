@@ -52,6 +52,12 @@ public class GuestRegisterActivity extends AppCompatActivity {
         }
     }
 
+    private void invalidate(String password,String confirmPassword){
+        if(!password.equals(confirmPassword)){
+            Toast.makeText(GuestRegisterActivity.this,"password does not match",Toast.LENGTH_LONG).show();
+        }
+    }
+
     private void register() {
         mProgress.setTitle("Registering user");
         mProgress.setMessage("Please wait while we Register you");
@@ -60,33 +66,37 @@ public class GuestRegisterActivity extends AppCompatActivity {
         String email = activityRegisterBinding.signUpEmail.getText().toString().trim();
         String password = activityRegisterBinding.signUpPassword.getText().toString().trim();
         String confirmPassword = activityRegisterBinding.signUpConfirmPassword.getText().toString().trim();
-        Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister("sidk@gmail.com", "12345678", "rahul", "dev");
-        registerResponseCall.enqueue(new Callback<UserRegisterResponse>() {
-            @Override
-            public void onResponse(Call<UserRegisterResponse> call, Response<UserRegisterResponse> response) {
-                mProgress.dismiss();
-                if (response.isSuccessful()) {
-                    UserRegisterResponse userRegisterResponse = response.body();
-                    SharedPreferenceManager.getInstance(GuestRegisterActivity.this).saveToken(userRegisterResponse.getToken());
-                    startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
-                    Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    try {
-                        AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
-                        Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getError(), Toast.LENGTH_SHORT).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+        if (!password.equals(confirmPassword)) {
+            Toast.makeText(GuestRegisterActivity.this, "password does not match", Toast.LENGTH_LONG).show();
+            mProgress.dismiss();
+        } else {
+            Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, "rahul", "dev");
+            registerResponseCall.enqueue(new Callback<UserRegisterResponse>() {
+                @Override
+                public void onResponse(Call<UserRegisterResponse> call, Response<UserRegisterResponse> response) {
+                    mProgress.dismiss();
+                    if (response.isSuccessful()) {
+                        UserRegisterResponse userRegisterResponse = response.body();
+                        SharedPreferenceManager.getInstance(GuestRegisterActivity.this).saveToken(userRegisterResponse.getToken());
+                        startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
+                        Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        try {
+                            AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
+                            Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getError(), Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            }
 
-
-            @Override
-            public void onFailure(Call<UserRegisterResponse> call, Throwable t) {
-                mProgress.dismiss();
-                Toast.makeText(GuestRegisterActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<UserRegisterResponse> call, Throwable t) {
+                    mProgress.dismiss();
+                    Toast.makeText(GuestRegisterActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }
