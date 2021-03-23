@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="#EEF67E"
+    android:layout_height="wrap_content"
     android:elevation="@dimen/cardview_compat_inset_shadow"
-    app:cardCornerRadius="@dimen/cardview_default_elevation">
+    app:cardCornerRadius="@dimen/cardview_default_elevation"
+    android:layout_marginTop="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,35 +16,44 @@
             android:id="@+id/bulb"
             android:layout_width="70dp"
             android:layout_height="70dp"
-           android:src="@drawable/bulb"
+            android:src="@drawable/bulb"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:id="@+id/light_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="Light 1"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bulb"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:layout_marginEnd="16dp"/>
 
         <TextView
             android:id="@+id/light_status"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:background="#E5F48F"
             android:gravity="center"
             android:text="On"
-            android:textColor="#E1B71F"
+            android:textColor="#6C5503"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bulb"
-            app:layout_constraintTop_toBottomOf="@+id/light_name" />
+            app:layout_constraintTop_toBottomOf="@+id/light_name"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:layout_marginEnd="16dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
