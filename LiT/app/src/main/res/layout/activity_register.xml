@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.register.GuestRegisterActivity">
 
@@ -14,7 +15,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/litlogo"
             android:layout_gravity="center"
             android:layout_marginTop="48dp"/>
 
@@ -91,13 +92,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="32dp"
             android:textSize="16sp"
-            android:layout_marginTop="96dp"
             android:text="Register"
-            android:backgroundTint="#D1D1D1"
-            android:textColor="#000000"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"/>
+            app:cornerRadius="16dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -124,7 +122,7 @@
                 android:text="Sign in"
                 android:textStyle="bold"
                 android:layout_marginStart="4dp"
-                android:textColor="#000000"
+                android:textColor="@color/design_default_color_primary_dark"
                 android:textSize="16sp"/>
         </LinearLayout>
 
