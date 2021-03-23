@@ -49,17 +49,33 @@
         app:backgroundTint="#1ff28c"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send info"
-        android:textColor="@color/black"
-        app:cornerRadius="16dp"
         android:layout_marginTop="34dp"
+        android:text="See User Requests"
+        android:textColor="@color/black"
         app:backgroundTint="#1fbbde"
+        app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialButton2" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="Logout"
+        android:textColor="@color/black"
+        app:backgroundTint="#FF0258"
+        app:cornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialButton4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

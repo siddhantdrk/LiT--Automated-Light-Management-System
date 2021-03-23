@@ -16,18 +16,31 @@ import com.my.lit.databinding.ActivityWelcomeBinding;
 import com.my.lit.storage.SharedPreferenceManager;
 
 public class WelcomeActivity extends AppCompatActivity {
-    ActivityWelcomeBinding welcomeBinding;
+    private ActivityWelcomeBinding welcomeBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        welcomeBinding=ActivityWelcomeBinding.inflate(LayoutInflater.from(this));
-        setContentView(welcomeBinding.getRoot());
+        welcomeBinding = ActivityWelcomeBinding.inflate(LayoutInflater.from(this));
+        checkIfUserExists();
         welcomeBinding.proceedAdminBtn.setOnClickListener(this::onClick);
         welcomeBinding.proceedGuestBtn.setOnClickListener(this::onClick);
     }
 
+    private void checkIfUserExists() {
+        if (SharedPreferenceManager.getInstance(this).getToken() != null) {
+            if (SharedPreferenceManager.getInstance(this).isAdmin())
+                startActivity(new Intent(WelcomeActivity.this, AdminDashBoardActivity.class));
+            else
+                startActivity(new Intent(WelcomeActivity.this, GuestDashBoardActivity.class));
+            finish();
+        } else {
+            setContentView(welcomeBinding.getRoot());
+        }
+    }
+
     private void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.proceed_admin_btn:
                 startActivity(new Intent(WelcomeActivity.this, AdminLoginActivity.class));
                 SharedPreferenceManager.getInstance(this).setAdmin(true);
@@ -37,16 +50,5 @@ public class WelcomeActivity extends AppCompatActivity {
                 SharedPreferenceManager.getInstance(this).setAdmin(false);
                 break;
         }
-    }
-
-    @Override
-    protected void onStart() {
-        if (SharedPreferenceManager.getInstance(this).getToken() == null) {
-            if (SharedPreferenceManager.getInstance(this).isAdmin())
-                startActivity(new Intent(WelcomeActivity.this, AdminDashBoardActivity.class));
-            else
-                startActivity(new Intent(WelcomeActivity.this, GuestDashBoardActivity.class));
-        }
-        super.onStart();
     }
 }
