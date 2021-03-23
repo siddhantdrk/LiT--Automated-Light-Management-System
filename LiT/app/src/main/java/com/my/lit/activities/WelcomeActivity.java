@@ -1,16 +1,19 @@
 package com.my.lit.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.my.lit.R;
+import com.my.lit.activities.dashboard.AdminDashBoardActivity;
+import com.my.lit.activities.dashboard.GuestDashBoardActivity;
 import com.my.lit.activities.login.AdminLoginActivity;
 import com.my.lit.activities.login.GuestLoginActivity;
 import com.my.lit.databinding.ActivityWelcomeBinding;
+import com.my.lit.storage.SharedPreferenceManager;
 
 public class WelcomeActivity extends AppCompatActivity {
     ActivityWelcomeBinding welcomeBinding;
@@ -27,11 +30,23 @@ public class WelcomeActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.proceed_admin_btn:
                 startActivity(new Intent(WelcomeActivity.this, AdminLoginActivity.class));
-            break;
+                SharedPreferenceManager.getInstance(this).setAdmin(true);
+                break;
             case R.id.proceed_guest_btn:
                 startActivity(new Intent(WelcomeActivity.this, GuestLoginActivity.class));
-            break;
+                SharedPreferenceManager.getInstance(this).setAdmin(false);
+                break;
         }
     }
 
+    @Override
+    protected void onStart() {
+        if (SharedPreferenceManager.getInstance(this).getToken() == null) {
+            if (SharedPreferenceManager.getInstance(this).isAdmin())
+                startActivity(new Intent(WelcomeActivity.this, AdminDashBoardActivity.class));
+            else
+                startActivity(new Intent(WelcomeActivity.this, GuestDashBoardActivity.class));
+        }
+        super.onStart();
+    }
 }

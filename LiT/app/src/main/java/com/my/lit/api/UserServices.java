@@ -1,11 +1,8 @@
 package com.my.lit.api;
 
-import androidx.versionedparcelable.NonParcelField;
-
 import com.my.lit.responses.AdminLoginResponse;
 import com.my.lit.responses.UserLoginResponse;
 import com.my.lit.responses.UserRegisterResponse;
-import com.my.lit.responses.loginRegisterResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -30,31 +27,10 @@ public interface UserServices {
             @Field("password") String password
     );
 
-    @FormUrlEncoded
-    @POST("register")
-    Call<loginRegisterResponse> register(
-            @Field("email") String email,
-            @Field("password") String password,
-            @Field("name") String name
-    );
-
-    @FormUrlEncoded
-    @POST("login")
-    Call<loginRegisterResponse> login(
-            @Field("email") String email,
-            @Field("password") String password
-    );
 
     @FormUrlEncoded
     @POST("api/v1/admin/signin")
     Call<AdminLoginResponse> adminLogin(
-            @Field("email") String email,
-            @Field("password") String password
-    );
-
-    @FormUrlEncoded
-    @POST("login")
-    Call<loginRegisterResponse> login(
             @Field("email") String email,
             @Field("password") String password
     );

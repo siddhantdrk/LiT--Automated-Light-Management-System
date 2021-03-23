@@ -9,13 +9,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
 import com.my.lit.R;
 import com.my.lit.activities.dashboard.GuestDashBoardActivity;
 import com.my.lit.activities.login.GuestLoginActivity;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityRegisterBinding;
+import com.my.lit.responses.AuthErrorResponse;
 import com.my.lit.responses.UserRegisterResponse;
-import com.my.lit.responses.loginRegisterResponse;
+import com.my.lit.storage.SharedPreferenceManager;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,28 +60,30 @@ public class GuestRegisterActivity extends AppCompatActivity {
         String email = activityRegisterBinding.signUpEmail.getText().toString().trim();
         String password = activityRegisterBinding.signUpPassword.getText().toString().trim();
         String confirmPassword = activityRegisterBinding.signUpConfirmPassword.getText().toString().trim();
-        Call<loginRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().register("rahuldev1531@gmail.com", "123456", "rahul");
-        registerResponseCall.enqueue(new Callback<loginRegisterResponse>() {
+        Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister("sidrk@gmail.com", "12345678", "rahul", "dev");
+        registerResponseCall.enqueue(new Callback<UserRegisterResponse>() {
             @Override
-            public void onResponse(Call<loginRegisterResponse> call, Response<loginRegisterResponse> response) {
+            public void onResponse(Call<UserRegisterResponse> call, Response<UserRegisterResponse> response) {
                 mProgress.dismiss();
-                loginRegisterResponse userRegisterResponse = response.body();
                 if (response.isSuccessful()) {
-                    if (response.code() == 400) {
-                        Toast.makeText(GuestRegisterActivity.this, userRegisterResponse.getErr(), Toast.LENGTH_SHORT).show();
-                    } else if (response.code() == 200) {
-                        startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
-                        Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
+                    UserRegisterResponse userRegisterResponse = response.body();
+                    SharedPreferenceManager.getInstance(GuestRegisterActivity.this).saveToken(userRegisterResponse.getToken());
+                    startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
+                    Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
-                    Toast.makeText(GuestRegisterActivity.this, "Unsuccessful " + response.code() + response.raw(), Toast.LENGTH_SHORT).show();
+                    try {
+                        AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
+                        Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getError(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
 
             @Override
-            public void onFailure(Call<loginRegisterResponse> call, Throwable t) {
+            public void onFailure(Call<UserRegisterResponse> call, Throwable t) {
                 mProgress.dismiss();
                 Toast.makeText(GuestRegisterActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }

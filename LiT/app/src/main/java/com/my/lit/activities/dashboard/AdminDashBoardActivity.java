@@ -1,12 +1,12 @@
 package com.my.lit.activities.dashboard;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.my.lit.R;
 
-public class AdminDashBoard extends AppCompatActivity {
+public class AdminDashBoardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

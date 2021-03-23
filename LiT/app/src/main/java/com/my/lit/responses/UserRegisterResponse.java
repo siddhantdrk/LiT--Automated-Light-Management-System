@@ -3,25 +3,17 @@ package com.my.lit.responses;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-public class UserRegisterResponse {
-    @SerializedName("error")
-    private String error;
-    @SerializedName("token")
-    private String token;
-    @SerializedName("user")
-    private JsonObject user;
+import java.io.Serializable;
 
-    public UserRegisterResponse(String error) {
-        this.error = error;
-    }
+public class UserRegisterResponse implements Serializable {
+    @SerializedName("token")
+    private final String token;
+    @SerializedName("user")
+    private final JsonObject user;
 
     public UserRegisterResponse(String token, JsonObject user) {
         this.token = token;
         this.user = user;
-    }
-
-    public String getError() {
-        return error;
     }
 
     public String getToken() {

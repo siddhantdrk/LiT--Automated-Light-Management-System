@@ -1,35 +1,35 @@
 package com.my.lit.responses;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-public class AdminLoginResponse {
+import org.json.JSONObject;
 
-    @SerializedName("error")
-    private String error;
+import java.io.Serializable;
+
+public class AdminLoginResponse implements Serializable {
     @SerializedName("token")
     private String token;
     @SerializedName("user")
-    private JsonObject admin;
+    private JSONObject user;
 
-    public AdminLoginResponse(String error) {
-        this.error = error;
-    }
-
-    public AdminLoginResponse(String token, JsonObject admin) {
+    public AdminLoginResponse(String token, JSONObject user) {
         this.token = token;
-        this.admin = admin;
-    }
-
-    public String getError() {
-        return error;
+        this.user = user;
     }
 
     public String getToken() {
         return token;
     }
 
-    public JsonObject getAdmin() {
-        return admin;
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public JSONObject getUser() {
+        return user;
+    }
+
+    public void setUser(JSONObject user) {
+        this.user = user;
     }
 }

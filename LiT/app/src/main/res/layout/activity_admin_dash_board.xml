@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#607D8B"
 
-    tools:context=".activities.dashboard.AdminDashBoard">
+    tools:context=".activities.dashboard.AdminDashBoardActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/admin"/>
+        android:src="@drawable/admin" />
 
 
     <com.google.android.material.button.MaterialButton

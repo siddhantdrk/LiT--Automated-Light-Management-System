@@ -1,18 +1,15 @@
 package com.my.lit.adapters;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.my.lit.R;
-import com.my.lit.Room;
+import com.my.lit.models.Room;
 
 import java.util.ArrayList;
 

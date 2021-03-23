@@ -1,6 +1,5 @@
-package com.my.lit;
+package com.my.lit.models;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Room {
