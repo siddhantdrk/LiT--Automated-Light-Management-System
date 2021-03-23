@@ -46,7 +46,7 @@ public class AdminLoginActivity extends AppCompatActivity {
             case R.id.SignUp:
                 Intent intent = new Intent(AdminLoginActivity.this, GuestRegisterActivity.class);
                 view.getContext().startActivity(intent);
-            case R.id.signIn:
+            case R.id.LogInBtn:
                 login();
         }
     }

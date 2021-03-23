@@ -8,7 +8,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String BASE_URL = "https://appbots-ailights.herokuapp.com/";
+    private static final String BASE_URL = "http://192.168.201.90:2000/";
     private static final String BASE_URL_TEMP = "http://192.168.43.199:3000/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;
