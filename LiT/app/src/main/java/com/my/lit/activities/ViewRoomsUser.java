@@ -71,7 +71,5 @@ public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter
         Intent intent = new Intent(this,LightDetails.class);
         intent.putExtra("Lights", item.getLightstate());
         startActivity(intent);
-        finish();
-
     }
 }
