@@ -2,12 +2,12 @@ package com.my.lit.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import com.my.lit.R;
+import com.my.lit.adapters.ControlLightsAdapter;
 import com.my.lit.adapters.ViewLightsAdapter;
 import com.my.lit.databinding.ActivityLightDetailsBinding;
 
@@ -15,11 +15,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LightDetails extends AppCompatActivity {
+public class LightsDetailadminActivity extends AppCompatActivity {
 
     ActivityLightDetailsBinding binding;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +35,7 @@ public class LightDetails extends AppCompatActivity {
             lightstatus.add(entry.getValue());
 
         }
-        
+
         setupRecyclerView(lightnames,lightstatus);
 
 
@@ -47,7 +45,7 @@ public class LightDetails extends AppCompatActivity {
 
     private void setupRecyclerView(ArrayList<String> lightnames,ArrayList<Boolean> lightstatus) {
 
-        ViewLightsAdapter adapter = new ViewLightsAdapter(this,lightnames,lightstatus);
+        ControlLightsAdapter adapter = new ControlLightsAdapter(this,lightnames,lightstatus);
         binding.lightDetailsRv.setAdapter(adapter);
         binding.lightDetailsRv.setLayoutManager(new LinearLayoutManager(this));
     }

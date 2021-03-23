@@ -10,18 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.my.lit.R;
 
 import java.util.ArrayList;
 
-public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.ViewHolder> {
+public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdapter.ViewHolder>{
     ArrayList<String> lightNames ;
     ArrayList<Boolean> lightStatus ;
     Context context;
 
 
 
-    public ViewLightsAdapter(Context context,ArrayList<String> lightnames, ArrayList<Boolean> lightstatus) {
+    public ControlLightsAdapter(Context context, ArrayList<String> lightnames, ArrayList<Boolean> lightstatus) {
         this.lightNames = lightnames;
         this.lightStatus = lightstatus;
         this.context = context;
@@ -30,11 +31,10 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.light_item,parent,false);
+        View view = layoutInflater.inflate(R.layout.control_lights_item,parent,false);
 
-        return new ViewHolder(view);
+        return new ControlLightsAdapter.ViewHolder(view);
     }
 
     @Override
@@ -51,7 +51,6 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
             holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
             holder.Bulb.setImageDrawable(context.getResources().getDrawable(R.drawable.off_bulb));
         }
-
     }
 
     @Override
@@ -64,6 +63,7 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
         TextView LightName;
         TextView LightStatus;
         ImageView Bulb;
+        MaterialButton switchBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,6 +71,7 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
             LightName = itemView.findViewById(R.id.light_name);
             LightStatus = itemView.findViewById(R.id.light_status);
             Bulb = itemView.findViewById(R.id.bulb);
+            switchBtn = itemView.findViewById(R.id.switch_btn);
         }
     }
 }

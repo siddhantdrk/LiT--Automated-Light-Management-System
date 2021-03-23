@@ -36,12 +36,12 @@
             app:cornerRadius="16dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/change_lighting_btn"
+            android:id="@+id/control_lighting_btn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="Change Lightings"
+            android:text="Control Lightings"
             android:textColor="@color/black"
             app:backgroundTint="#1ff28c"
             app:cornerRadius="16dp" />

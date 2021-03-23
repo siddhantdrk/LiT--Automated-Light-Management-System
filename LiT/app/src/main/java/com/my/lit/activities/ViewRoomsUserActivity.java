@@ -14,7 +14,7 @@ import com.my.lit.models.Room;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener {
+public class ViewRoomsUserActivity extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener {
 
    ActivityViewLightsUserBinding binding;
 
@@ -102,7 +102,7 @@ public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter
 
     @Override
     public void onItemClick(Room item) {
-        Intent intent = new Intent(this,LightDetails.class);
+        Intent intent = new Intent(this, LightDetailsActivity.class);
         intent.putExtra("Lights", item.getLightstate());
         startActivity(intent);
 

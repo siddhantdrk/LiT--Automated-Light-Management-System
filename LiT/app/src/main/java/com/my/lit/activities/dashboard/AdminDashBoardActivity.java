@@ -1,5 +1,6 @@
 package com.my.lit.activities.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.my.lit.R;
+import com.my.lit.activities.ViewRoomsAdminActivity;
+import com.my.lit.activities.ViewRoomsUserActivity;
 import com.my.lit.databinding.ActivityAdminDashBoardBinding;
 import com.my.lit.storage.SharedPreferenceManager;
 
@@ -20,6 +23,8 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.logoutBtn.setOnClickListener(this::onClick);
+        binding.viewCurrentLightingBtn.setOnClickListener(this::onClick);
+        binding.controlLightingBtn.setOnClickListener(this::onClick);
     }
 
     private void onClick(View view) {
@@ -27,6 +32,15 @@ public class AdminDashBoardActivity extends AppCompatActivity {
             case R.id.logout_btn:
                 SharedPreferenceManager.getInstance(this).clear();
                 finish();
+                break;
+            case R.id.view_current_lighting_btn:
+                Intent intent = new Intent(AdminDashBoardActivity.this, ViewRoomsUserActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.control_lighting_btn:
+                Intent intent2 = new Intent(AdminDashBoardActivity.this, ViewRoomsAdminActivity.class);
+                startActivity(intent2);
+                break;
         }
     }
 }
