@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener {
 
-    ActivityViewLightsUserBinding binding;
+   ActivityViewLightsUserBinding binding;
 
 
     @Override
@@ -61,7 +61,7 @@ public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter
     }
 
     private void setUpRecyclerView(ArrayList<Room> list) {
-        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list, (ViewRoomsAdapter.OnItemClickListener) this);
+        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list, this);
         binding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
         binding.viewLightsUserRv.setAdapter(adapter);
     }
@@ -70,6 +70,8 @@ public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter
     public void onItemClick(Room item) {
         Intent intent = new Intent(this,LightDetails.class);
         intent.putExtra("Lights", item.getLightstate());
+        startActivity(intent);
+        finish();
 
     }
 }

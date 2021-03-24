@@ -30,21 +30,22 @@ public class ViewRoomsAdapter extends RecyclerView.Adapter<ViewRoomsAdapter.View
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.room_item,parent,false);
 
+
         return new ViewLightsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewLightsViewHolder holder, int position) {
-        holder.BuildingName.setText((CharSequence) list.get(position).toString());
-        holder.Floor.setText(list.get(position).toString());
-        holder.RoomNo.setText(list.get(position).toString());
+        holder.BuildingName.setText( list.get(position).getBuilding());
+        holder.Floor.setText(String.valueOf(list.get(position).getFloor()) );
+        holder.RoomNo.setText( String.valueOf(list.get(position).getRoom_no()));
         holder.bind(list.get(position),listener);
     }
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public static class ViewLightsViewHolder extends RecyclerView.ViewHolder {
@@ -62,7 +63,6 @@ public class ViewRoomsAdapter extends RecyclerView.Adapter<ViewRoomsAdapter.View
         }
 
         public void bind(Room room, OnItemClickListener listener) {
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -71,11 +71,15 @@ public class ViewRoomsAdapter extends RecyclerView.Adapter<ViewRoomsAdapter.View
             });
         }
     }
+
     public interface OnItemClickListener {
         void onItemClick(Room item);
     }
 
+
 }
+
+
 
 
 

@@ -18,8 +18,7 @@ import java.util.Map;
 public class LightDetails extends AppCompatActivity {
 
     ActivityLightDetailsBinding binding;
-    ArrayList<String> lightnames ;
-    ArrayList<Boolean> lightstatus ;
+
 
 
     @Override
@@ -39,14 +38,14 @@ public class LightDetails extends AppCompatActivity {
 
         }
         
-        setupRecyclerView();
+        setupRecyclerView(lightnames,lightstatus);
 
 
 
 
     }
 
-    private void setupRecyclerView() {
+    private void setupRecyclerView(ArrayList<String> lightnames,ArrayList<Boolean> lightstatus) {
 
         ViewLightsAdapter adapter = new ViewLightsAdapter(this,lightnames,lightstatus);
         binding.lightDetailsRv.setAdapter(adapter);

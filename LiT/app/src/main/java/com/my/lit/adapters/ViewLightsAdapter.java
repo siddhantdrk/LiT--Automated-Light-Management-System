@@ -42,10 +42,14 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.LightName.setText(lightNames.get(position));
         if(lightStatus.get(position)){
-            holder.LightName.setBackgroundColor(context.getResources().getColor(R.color.yellow_light));
+            holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.yellow_light));
+            holder.LightStatus.setText("ON");
+            holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
         }
         else{
-            holder.LightName.setBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.LightStatus.setText("OFF");
+            holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
         }
 
     }

@@ -13,11 +13,12 @@
 
         <TextView
 
-            android:layout_width="198dp"
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:textColor="@color/black"
             android:text="Room No."
+            android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/RoomNo"
             app:layout_constraintHorizontal_bias="0.457"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +26,13 @@
 
         <TextView
             android:id="@+id/RoomNo"
-            android:layout_width="198dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="5524"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -37,6 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Building : CCC"
+
+            android:paddingStart="12dp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +54,10 @@
             android:id="@+id/floor_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:text="Floor: 100"
+            android:padding="8dp"
+            android:paddingStart="12dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/building_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
