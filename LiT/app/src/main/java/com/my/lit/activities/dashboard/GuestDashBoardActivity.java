@@ -7,8 +7,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.my.lit.activities.ViewRoomsUser;
 import com.my.lit.R;
+import com.my.lit.activities.ViewRoomsUser;
 import com.my.lit.databinding.ActivityGuestDashBoardBinding;
 import com.my.lit.storage.SharedPreferenceManager;
 
@@ -37,10 +37,7 @@ public class GuestDashBoardActivity extends AppCompatActivity {
             case R.id.view_current_lighting_btn:
                 Intent intent = new Intent(getApplicationContext(), ViewRoomsUser.class);
                 startActivity(intent);
-                finish();
                 break;
-
-
         }
     }
 }
