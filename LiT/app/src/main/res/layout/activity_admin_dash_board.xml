@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#607D8B"
+
     tools:context=".activities.dashboard.AdminDashBoard">
 
     <ImageView
@@ -19,6 +21,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/materialButton"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
@@ -33,6 +36,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/materialButton2"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
@@ -48,6 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send info"
+        android:textColor="@color/black"
         app:cornerRadius="16dp"
         android:layout_marginTop="34dp"
         app:backgroundTint="#1fbbde"

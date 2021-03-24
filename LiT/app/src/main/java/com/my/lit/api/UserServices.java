@@ -1,5 +1,7 @@
 package com.my.lit.api;
 
+import androidx.versionedparcelable.NonParcelField;
+
 import com.my.lit.responses.AdminLoginResponse;
 import com.my.lit.responses.UserLoginResponse;
 import com.my.lit.responses.UserRegisterResponse;
@@ -39,6 +41,13 @@ public interface UserServices {
     @FormUrlEncoded
     @POST("admin/signin")
     Call<AdminLoginResponse> adminLogin(
+            @Field("email") String email,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("login")
+    Call<loginRegisterResponse> login(
             @Field("email") String email,
             @Field("password") String password
     );

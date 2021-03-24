@@ -5,12 +5,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static final String BASE_URL = "http://192.168.43.98:2000/api/v1/";
-    private static final String BASE_URL_TEMP = "http://192.168.201.90:3000/";
+   private static final String BASE_URL_TEMP = "http://192.168.43.98:3000/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit;
 
     private RetrofitClient() {
-        retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL_TEMP)
                 .addConverterFactory(GsonConverterFactory
                         .create()).build();
 
