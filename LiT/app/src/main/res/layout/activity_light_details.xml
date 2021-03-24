@@ -6,14 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".activities.LightDetails">
 
+    <TextView
+        android:id="@+id/header_lights"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="LIGHTS INFORMATION"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:textSize="34sp"
+        android:background="#F3DCDC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/light_details_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/header_lights" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

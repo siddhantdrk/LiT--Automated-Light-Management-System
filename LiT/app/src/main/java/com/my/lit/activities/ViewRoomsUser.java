@@ -51,9 +51,43 @@ public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter
         room3lights.put("R3L4", true);
         room3lights.put("R3L5", false);
         room3.setLightstate(room3lights);
+
+        Room room4 = new Room(5223,"CCC3" , 2);
+        HashMap<String,Boolean> room4lights = new HashMap<>();
+        room4lights.put("R1L1", true);
+        room4lights.put("R1L2", true);
+        room4lights.put("R1L3", false);
+        room4lights.put("R1L4", true);
+        room4lights.put("R1L5", false);
+        room4.setLightstate(room4lights);
+
+        Room room5 = new Room(5223,"CCC3" , 2);
+        HashMap<String,Boolean> room5lights = new HashMap<>();
+        room5lights.put("R1L1", true);
+        room5lights.put("R1L2", true);
+        room5lights.put("R1L3", false);
+        room5lights.put("R1L4", true);
+        room5lights.put("R1L5", false);
+        room5.setLightstate(room5lights);
+
+        Room room6 = new Room(5223,"CCC3" , 2);
+        HashMap<String,Boolean> room6lights = new HashMap<>();
+        room6lights.put("R1L1", true);
+        room6lights.put("R1L2", true);
+        room6lights.put("R1L3", false);
+        room6lights.put("R1L4", true);
+        room6lights.put("R1L5", false);
+        room6.setLightstate(room6lights);
+
+
         list.add(room1);
         list.add(room2);
         list.add(room3);
+        list.add(room4);
+        list.add(room5);
+        list.add(room6);
+
+
 
         setUpRecyclerView(list);
 
@@ -71,7 +105,6 @@ public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter
         Intent intent = new Intent(this,LightDetails.class);
         intent.putExtra("Lights", item.getLightstate());
         startActivity(intent);
-        finish();
 
     }
 }
