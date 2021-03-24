@@ -19,6 +19,7 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
     ArrayList<String> lightNames ;
     ArrayList<Boolean> lightStatus ;
     Context context;
+    int switchBtnValue =2;
 
 
 
@@ -51,6 +52,30 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
             holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
             holder.Bulb.setImageDrawable(context.getResources().getDrawable(R.drawable.off_bulb));
         }
+        if(holder.LightStatus.equals("ON")){
+            switchBtnValue=1;
+        }else{
+            switchBtnValue=0;
+        }
+        holder.switchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //switch (holder.LightStatus)
+                if(switchBtnValue==1){
+                    holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.white));
+                    holder.LightStatus.setText("OFF");
+                    holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
+                    holder.Bulb.setImageDrawable(context.getResources().getDrawable(R.drawable.off_bulb));
+                    switchBtnValue=0;
+                }else {
+                    holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.yellow_light));
+                    holder.LightStatus.setText("ON");
+                    holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
+                    holder.Bulb.setImageDrawable(context.getResources().getDrawable(R.drawable.bulb));
+                    switchBtnValue=1;
+                }
+            }
+        });
     }
 
     @Override
