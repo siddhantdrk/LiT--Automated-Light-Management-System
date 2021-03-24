@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ViewRoomsUser">
+    tools:context=".activities.LightDetails">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/view_lights_user_rv"
+        android:id="@+id/light_details_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

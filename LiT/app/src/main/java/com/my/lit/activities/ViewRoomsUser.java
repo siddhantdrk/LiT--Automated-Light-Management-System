@@ -1,18 +1,19 @@
 package com.my.lit.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.my.lit.adapters.ViewLightsAdapter;
+import com.my.lit.adapters.ViewRoomsAdapter;
 import com.my.lit.databinding.ActivityViewLightsUserBinding;
 import com.my.lit.models.Room;
 
 import java.util.ArrayList;
 
-public class ViewLightsUser extends AppCompatActivity {
+public class ViewRoomsUser extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener {
 
     ActivityViewLightsUserBinding binding;
 
@@ -33,11 +34,20 @@ public class ViewLightsUser extends AppCompatActivity {
         list.add(room3);
 
         setUpRecyclerView(list);
+
+
     }
 
     private void setUpRecyclerView(ArrayList<Room> list) {
-        ViewLightsAdapter adapter = new ViewLightsAdapter(list);
+        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list, (ViewRoomsAdapter.OnItemClickListener) this);
         binding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
         binding.viewLightsUserRv.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(Room item) {
+        Intent intent = new Intent(this,LightDetails.class);
+        intent.putExtra("Lights", item.getLightstate());
+
     }
 }

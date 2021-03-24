@@ -1,5 +1,7 @@
 package com.my.lit.adapters;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,52 +11,60 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.my.lit.R;
-import com.my.lit.models.Room;
+import com.my.lit.activities.LightDetails;
 
 import java.util.ArrayList;
 
-public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.ViewLightsViewHolder> {
+public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.ViewHolder> {
+    ArrayList<String> lightNames ;
+    ArrayList<Boolean> lightStatus ;
+    Context context;
 
-    ArrayList<Room> list;
 
-    public ViewLightsAdapter(ArrayList<Room> list) {
-        this.list = list;
+
+    public ViewLightsAdapter(Context context,ArrayList<String> lightnames, ArrayList<Boolean> lightstatus) {
+        this.lightNames = lightnames;
+        this.lightStatus = lightstatus;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public ViewLightsAdapter.ViewLightsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.room_item,parent,false);
-        return new ViewLightsViewHolder(view);
+        View view = layoutInflater.inflate(R.layout.light_item,parent,false);
+
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewLightsAdapter.ViewLightsViewHolder holder, int position) {
-        holder.BuildingName.setText((CharSequence) list.get(position).toString());
-        holder.Floor.setText(list.get(position).toString());
-        holder.RoomNo.setText(list.get(position).toString());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.LightName.setText(lightNames.get(position));
+        if(lightStatus.get(position)){
+            holder.LightName.setBackgroundColor(context.getResources().getColor(R.color.yellow_light));
+        }
+        else{
+            holder.LightName.setBackgroundColor(context.getResources().getColor(R.color.white));
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lightNames.size();
     }
 
-    public static class ViewLightsViewHolder extends RecyclerView.ViewHolder {
-        public TextView BuildingName;
-        public TextView RoomNo;
-        public TextView Floor;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewLightsViewHolder(View itemView) {
+        TextView LightName;
+        TextView LightStatus;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            BuildingName = itemView.findViewById(R.id.building_name);
-            RoomNo = itemView.findViewById(R.id.RoomNo);
-            Floor = itemView.findViewById(R.id.floor_no);
 
-
+            LightName = itemView.findViewById(R.id.light_name);
+            LightStatus = itemView.findViewById(R.id.light_status);
         }
     }
 }
