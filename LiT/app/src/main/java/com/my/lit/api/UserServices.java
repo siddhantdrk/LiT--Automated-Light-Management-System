@@ -15,7 +15,7 @@ import retrofit2.http.POST;
 public interface UserServices {
 
     @FormUrlEncoded
-    @POST("user/signup")
+    @POST("api/v1/user/signup")
      Call<UserRegisterResponse>userRegister(
             @Field("email") String email,
             @Field("password") String password,
@@ -24,7 +24,7 @@ public interface UserServices {
     );
 
     @FormUrlEncoded
-    @POST("user/signin")
+    @POST("api/v1/user/signin")
     Call<UserLoginResponse> userLogin(
             @Field("email") String email,
             @Field("password") String password
@@ -39,7 +39,14 @@ public interface UserServices {
     );
 
     @FormUrlEncoded
-    @POST("admin/signin")
+    @POST("login")
+    Call<loginRegisterResponse> login(
+            @Field("email") String email,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("api/v1/admin/signin")
     Call<AdminLoginResponse> adminLogin(
             @Field("email") String email,
             @Field("password") String password

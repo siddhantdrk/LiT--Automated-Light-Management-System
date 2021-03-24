@@ -14,6 +14,8 @@
         android:theme="@style/Theme.LiT"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.ViewLightsUser"></activity>
+        <activity android:name=".activities.register.GuestRegisterActivity2"></activity>
+        <activity android:name=".activities.login.GuestLoginActivity2" />
         <activity android:name=".activities.register.AdminRegisterActivity" />
         <activity android:name=".activities.dashboard.GuestDashBoardActivity" />
         <activity android:name=".activities.dashboard.AdminDashBoard" />
