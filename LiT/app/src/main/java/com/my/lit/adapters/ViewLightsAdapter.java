@@ -2,9 +2,11 @@ package com.my.lit.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,6 +52,7 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
             holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.white));
             holder.LightStatus.setText("OFF");
             holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
+            holder.Bulb.setImageDrawable(context.getResources().getDrawable(R.drawable.off_bulb));
         }
 
     }
@@ -63,12 +66,14 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
 
         TextView LightName;
         TextView LightStatus;
+        ImageView Bulb;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             LightName = itemView.findViewById(R.id.light_name);
             LightStatus = itemView.findViewById(R.id.light_status);
+            Bulb = itemView.findViewById(R.id.bulb);
         }
     }
 }

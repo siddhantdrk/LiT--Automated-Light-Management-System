@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/bulb"
             android:layout_width="70dp"
             android:layout_height="70dp"
            android:src="@drawable/bulb"
@@ -30,7 +30,7 @@
             android:text="Light 1"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/bulb"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -43,7 +43,7 @@
             android:text="On"
             android:textColor="#E1B71F"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/bulb"
             app:layout_constraintTop_toBottomOf="@+id/light_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
