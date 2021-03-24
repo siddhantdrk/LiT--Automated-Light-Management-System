@@ -60,7 +60,7 @@ public class GuestLoginActivity extends AppCompatActivity {
         mProgress.show();
         String email = activityLoginBinding.signInEmail.getText().toString().trim();
         String password = activityLoginBinding.signInPassword.getText().toString().trim();
-        Call<UserLoginResponse> userLoginResponseCall = RetrofitClient.getInstance().getUserServices().userLogin(email, password);
+        Call<UserLoginResponse> userLoginResponseCall = RetrofitClient.getInstance().getUserServices().userLogin("rahuldev1531@gmail.com", "123456");
         userLoginResponseCall.enqueue(new Callback<UserLoginResponse>() {
             @Override
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
