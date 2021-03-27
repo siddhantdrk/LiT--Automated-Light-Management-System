@@ -17,6 +17,7 @@ import java.util.HashMap;
 public class ViewRoomsUserActivity extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener {
 
    ActivityViewLightsUserBinding binding;
+    private String toCheck;
 
 
     @Override
@@ -87,9 +88,22 @@ public class ViewRoomsUserActivity extends AppCompatActivity implements ViewRoom
         list.add(room5);
         list.add(room6);
 
+        toCheck = getIntent().getStringExtra("From_GuestDashboard");
+
+        switch (toCheck){
+            case "ViewLights":
+                setUpRecyclerView(list);
+
+            case "SendRequest":
+                setUpRecyclerView(list);
 
 
-        setUpRecyclerView(list);
+
+        }
+
+
+
+
 
 
     }
@@ -104,6 +118,7 @@ public class ViewRoomsUserActivity extends AppCompatActivity implements ViewRoom
     public void onItemClick(Room item) {
         Intent intent = new Intent(this, LightDetailsActivity.class);
         intent.putExtra("Lights", item.getLightstate());
+        intent.putExtra("From_ViewRooms", toCheck);
         startActivity(intent);
 
     }

@@ -10,25 +10,40 @@
         android:id="@+id/header_lights"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#F3DCDC"
+        android:gravity="center_horizontal"
         android:text="LIGHTS INFORMATION"
         android:textColor="@color/black"
-        android:gravity="center_horizontal"
         android:textSize="34sp"
-        android:background="#F3DCDC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/light_details_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/send_request_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header_lights" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/send_request_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SEND for Lights"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cornerRadius="10dp"
+        android:padding="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

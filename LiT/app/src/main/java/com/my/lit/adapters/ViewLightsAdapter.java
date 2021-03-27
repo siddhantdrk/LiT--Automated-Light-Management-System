@@ -49,7 +49,7 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
             holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.white));
             holder.LightStatus.setText("OFF");
             holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
-            holder.Bulb.setImageDrawable(context.getResources().getDrawable(R.drawable.off_bulb));
+            holder.Bulb.setImageResource(R.drawable.off_bulb);
         }
 
     }

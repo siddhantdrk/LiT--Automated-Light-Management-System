@@ -25,6 +25,7 @@ public class GuestDashBoardActivity extends AppCompatActivity {
 
         binding.logoutBtn.setOnClickListener(this::onClick);
         binding.viewCurrentLightingBtn.setOnClickListener(this::onClick);
+        binding.requestLightingBtn.setOnClickListener(this::onClick);
     }
 
     private void onClick(View view) {
@@ -35,8 +36,15 @@ public class GuestDashBoardActivity extends AppCompatActivity {
                 break;
 
             case R.id.view_current_lighting_btn:
-                Intent intent = new Intent(getApplicationContext(), ViewRoomsUserActivity.class);
+                Intent intent = new Intent(this, ViewRoomsUserActivity.class);
+                intent.putExtra("From_GuestDashboard","ViewLights");
                 startActivity(intent);
+                break;
+
+            case R.id.request_lighting_btn:
+                Intent intent1 = new Intent(this,ViewRoomsUserActivity.class);
+                intent1.putExtra("From_GuestDashboard","SendRequest");
+                startActivity(intent1);
                 break;
         }
     }

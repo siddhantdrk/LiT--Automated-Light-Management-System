@@ -63,6 +63,12 @@ public class ViewRoomsAdapter extends RecyclerView.Adapter<ViewRoomsAdapter.View
         }
 
         public void bind(Room room, OnItemClickListener listener) {
+//                BuildingName.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//
+//                    }
+//                });
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
