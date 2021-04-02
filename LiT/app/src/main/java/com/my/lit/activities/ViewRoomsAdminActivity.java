@@ -93,9 +93,6 @@ public class ViewRoomsAdminActivity extends AppCompatActivity {
         toCheckFromAdminDashBoard = getIntent().getStringExtra("From_AdminDashboard");
 
         switch (toCheckFromAdminDashBoard){
-            case "ViewLights":
-                setUpViewLightRecyclerView(list);
-
             case "ControlLights":
                 setUpControlLightsRecyclerView(list);
 
@@ -115,21 +112,9 @@ public class ViewRoomsAdminActivity extends AppCompatActivity {
         binding.viewLightsUserRv.setAdapter(adapter);
     }
 
-    private void setUpViewLightRecyclerView(ArrayList<Room> list) {
-        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list,this::onViewLightsItemClick);
-        binding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
-        binding.viewLightsUserRv.setAdapter(adapter);
-    }
-
     public void onItemControlClick(Room item) {
-//        Intent intent = new Intent(this, LightsControlAdminActivity.class);
-//        intent.putExtra("Lights", item.getLightstate());
-//        startActivity(intent);
-    }
-
-    public void onViewLightsItemClick(Room item) {
-//        Intent intent = new Intent(this, LightsDetailadminActivity.class);
-//        intent.putExtra("Lights", item.getLightstate());
-//        startActivity(intent);
+        Intent intent = new Intent(this, ControlsLightAdminActivity.class);
+        intent.putExtra("Lights", item.getLightstate());
+        startActivity(intent);
     }
 }
