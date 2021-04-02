@@ -33,7 +33,7 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.control_lights_item,parent,false);
+        View view = layoutInflater.inflate(R.layout.light_item,parent,false);
 
         return new ControlLightsAdapter.ViewHolder(view);
     }

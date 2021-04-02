@@ -94,6 +94,9 @@ public class ViewRoomsUserActivity extends AppCompatActivity implements ViewRoom
             case "ViewLights":
                 setUpRecyclerView(list);
 
+            case "ViewLightsAdmin":
+                setUpRecyclerView(list);
+
             case "SendRequest":
                 setUpRecyclerView(list);
 

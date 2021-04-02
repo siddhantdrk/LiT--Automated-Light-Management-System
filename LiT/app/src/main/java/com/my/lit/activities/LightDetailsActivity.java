@@ -51,6 +51,11 @@ public class LightDetailsActivity extends AppCompatActivity implements RequestLi
                 setupRecyclerViewforViewLights(lightnames,lightstatus);
                 binding.sendRequestBtn.setVisibility(View.GONE);
 
+            case "ViewLightsAdmin":
+
+                setupRecyclerViewforViewLights(lightnames,lightstatus);
+                binding.sendRequestBtn.setVisibility(View.GONE);
+
 
             case "SendRequest":
                 setupRecyclerViewforSendReq(lightnames,lightstatus);

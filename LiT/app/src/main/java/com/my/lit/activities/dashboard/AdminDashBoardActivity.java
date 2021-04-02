@@ -25,6 +25,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         binding.logoutBtn.setOnClickListener(this::onClick);
         binding.viewCurrentLightingBtn.setOnClickListener(this::onClick);
         binding.controlLightingBtn.setOnClickListener(this::onClick);
+        binding.seeUserRequestBtn.setOnClickListener(this::onClick);
     }
 
     private void onClick(View view) {
@@ -35,12 +36,20 @@ public class AdminDashBoardActivity extends AppCompatActivity {
                 break;
             case R.id.view_current_lighting_btn:
                 Intent intent = new Intent(AdminDashBoardActivity.this, ViewRoomsUserActivity.class);
+                intent.putExtra("From_GuestDashboard","ViewLightsAdmin");
+
                 startActivity(intent);
                 break;
             case R.id.control_lighting_btn:
                 Intent intent2 = new Intent(AdminDashBoardActivity.this, ViewRoomsAdminActivity.class);
+                intent2.putExtra("From_AdminDashboard","ControlLights");
                 startActivity(intent2);
                 break;
+//            case R.id.see_user_request_btn:
+//                Intent intent3 = new Intent(AdminDashBoardActivity.this, SeeUserRequestActivity.class);
+//                intent3.putExtra("From_AdminDashboard","SendRequest");
+//                startActivity(intent3);
+//                break;
         }
     }
 }

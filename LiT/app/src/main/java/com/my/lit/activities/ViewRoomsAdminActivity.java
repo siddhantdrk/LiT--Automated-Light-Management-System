@@ -18,6 +18,9 @@ import java.util.HashMap;
 public class ViewRoomsAdminActivity extends AppCompatActivity {
 
     ActivityViewLightsUserBinding binding;
+
+    private String toCheckFromAdminDashBoard;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,22 +90,46 @@ public class ViewRoomsAdminActivity extends AppCompatActivity {
         list.add(room6);
 
 
+        toCheckFromAdminDashBoard = getIntent().getStringExtra("From_AdminDashboard");
 
-        setUpRecyclerView(list);
+        switch (toCheckFromAdminDashBoard){
+            case "ViewLights":
+                setUpViewLightRecyclerView(list);
+
+            case "ControlLights":
+                setUpControlLightsRecyclerView(list);
+
+            case "SendRequest":
+                setUpRecyclerView(list);
+        }
 
 
     }
 
     private void setUpRecyclerView(ArrayList<Room> list) {
-        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list,this::onItemClick);
+    }
+
+    private void setUpControlLightsRecyclerView(ArrayList<Room> list) {
+        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list,this::onItemControlClick);
         binding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
         binding.viewLightsUserRv.setAdapter(adapter);
     }
 
-    public void onItemClick(Room item) {
-        Intent intent = new Intent(this, LightsDetailadminActivity.class);
-        intent.putExtra("Lights", item.getLightstate());
-        startActivity(intent);
+    private void setUpViewLightRecyclerView(ArrayList<Room> list) {
+        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list,this::onViewLightsItemClick);
+        binding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.viewLightsUserRv.setAdapter(adapter);
+    }
 
+    public void onItemControlClick(Room item) {
+//        Intent intent = new Intent(this, LightsControlAdminActivity.class);
+//        intent.putExtra("Lights", item.getLightstate());
+//        startActivity(intent);
+    }
+
+    public void onViewLightsItemClick(Room item) {
+//        Intent intent = new Intent(this, LightsDetailadminActivity.class);
+//        intent.putExtra("Lights", item.getLightstate());
+//        startActivity(intent);
     }
 }
