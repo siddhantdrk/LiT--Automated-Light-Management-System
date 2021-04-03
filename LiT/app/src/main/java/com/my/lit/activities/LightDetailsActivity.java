@@ -1,21 +1,15 @@
 package com.my.lit.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
 
-import com.my.lit.R;
-import com.my.lit.adapters.ControlLightsAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.my.lit.adapters.RequestLightingAdapter;
 import com.my.lit.adapters.ViewLightsAdapter;
 import com.my.lit.databinding.ActivityLightDetailsBinding;
-import com.my.lit.models.Room;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,8 +62,6 @@ public class LightDetailsActivity extends AppCompatActivity implements RequestLi
                 });
 
         }
-
-
 
 
     }

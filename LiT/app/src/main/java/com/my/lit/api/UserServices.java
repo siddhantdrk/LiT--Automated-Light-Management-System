@@ -1,8 +1,7 @@
 package com.my.lit.api;
 
-import com.my.lit.responses.AdminLoginResponse;
-import com.my.lit.responses.UserLoginResponse;
-import com.my.lit.responses.UserRegisterResponse;
+import com.my.responses.AdminAuthResponse;
+import com.my.responses.GuestAuthResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -13,7 +12,7 @@ public interface UserServices {
 
     @FormUrlEncoded
     @POST("api/v1/user/signup")
-     Call<UserRegisterResponse>userRegister(
+    Call<GuestAuthResponse> userRegister(
             @Field("email") String email,
             @Field("password") String password,
             @Field("firstName") String firstName,
@@ -22,7 +21,7 @@ public interface UserServices {
 
     @FormUrlEncoded
     @POST("api/v1/user/signin")
-    Call<UserLoginResponse> userLogin(
+    Call<GuestAuthResponse> userLogin(
             @Field("email") String email,
             @Field("password") String password
     );
@@ -30,7 +29,7 @@ public interface UserServices {
 
     @FormUrlEncoded
     @POST("api/v1/admin/signin")
-    Call<AdminLoginResponse> adminLogin(
+    Call<AdminAuthResponse> adminLogin(
             @Field("email") String email,
             @Field("password") String password
     );

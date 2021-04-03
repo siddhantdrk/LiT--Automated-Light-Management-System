@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.my.lit.R;
 import com.my.lit.activities.ViewRoomsUserActivity;
+import com.my.lit.activities.WelcomeActivity;
 import com.my.lit.databinding.ActivityGuestDashBoardBinding;
 import com.my.lit.storage.SharedPreferenceManager;
 
@@ -32,6 +33,7 @@ public class GuestDashBoardActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.logout_btn:
                 SharedPreferenceManager.getInstance(this).clear();
+                startActivity(new Intent(this, WelcomeActivity.class));
                 finish();
                 break;
 

@@ -15,9 +15,9 @@ import com.my.lit.activities.dashboard.GuestDashBoardActivity;
 import com.my.lit.activities.login.GuestLoginActivity;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityRegisterBinding;
-import com.my.lit.responses.AuthErrorResponse;
-import com.my.lit.responses.UserRegisterResponse;
 import com.my.lit.storage.SharedPreferenceManager;
+import com.my.responses.AuthErrorResponse;
+import com.my.responses.GuestAuthResponse;
 
 import java.io.IOException;
 
@@ -48,6 +48,7 @@ public class GuestRegisterActivity extends AppCompatActivity {
             case R.id.signIn:
                 Intent intent1 = new Intent(GuestRegisterActivity.this, GuestLoginActivity.class);
                 view.getContext().startActivity(intent1);
+                finish();
                 break;
         }
     }
@@ -64,21 +65,21 @@ public class GuestRegisterActivity extends AppCompatActivity {
             Toast.makeText(GuestRegisterActivity.this, "password does not match", Toast.LENGTH_LONG).show();
             mProgress.dismiss();
         } else {
-            Call<UserRegisterResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, "rahul", "dev");
-            registerResponseCall.enqueue(new Callback<UserRegisterResponse>() {
+            Call<GuestAuthResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, "rahul", "dev");
+            registerResponseCall.enqueue(new Callback<GuestAuthResponse>() {
                 @Override
-                public void onResponse(Call<UserRegisterResponse> call, Response<UserRegisterResponse> response) {
+                public void onResponse(Call<GuestAuthResponse> call, Response<GuestAuthResponse> response) {
                     mProgress.dismiss();
                     if (response.isSuccessful()) {
-                        UserRegisterResponse userRegisterResponse = response.body();
-                        SharedPreferenceManager.getInstance(GuestRegisterActivity.this).saveToken(userRegisterResponse.getToken());
+                        GuestAuthResponse guestAuthResponse = response.body();
+                        SharedPreferenceManager.getInstance(GuestRegisterActivity.this).saveToken(guestAuthResponse.getGuestData().getToken());
                         startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
                         Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
                         try {
                             AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
-                            Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getError(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -86,7 +87,7 @@ public class GuestRegisterActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<UserRegisterResponse> call, Throwable t) {
+                public void onFailure(Call<GuestAuthResponse> call, Throwable t) {
                     mProgress.dismiss();
                     Toast.makeText(GuestRegisterActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
