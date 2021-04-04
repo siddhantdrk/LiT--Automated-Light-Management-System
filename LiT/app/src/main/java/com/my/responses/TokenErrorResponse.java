@@ -2,7 +2,7 @@ package com.my.responses;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GetAllAreaErrorResponse {
+public class TokenErrorResponse {
 
     @SerializedName("message")
     private String message;

@@ -12,8 +12,8 @@ import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityCurrentLightingGuestBinding;
 import com.my.lit.models.AreaDataItem;
 import com.my.lit.storage.SharedPreferenceManager;
-import com.my.responses.GetAllAreaErrorResponse;
 import com.my.responses.GetAllAreasResponse;
+import com.my.responses.TokenErrorResponse;
 
 import java.io.IOException;
 import java.util.List;
@@ -53,8 +53,8 @@ public class currentLightingGuestActivity extends AppCompatActivity {
                     areaDataItemList = getAllAreasResponse.getData();
                 } else {
                     try {
-                        GetAllAreaErrorResponse getAllAreaErrorResponse = new Gson().fromJson(response.errorBody().string(), GetAllAreaErrorResponse.class);
-                        Toast.makeText(currentLightingGuestActivity.this, "" + getAllAreaErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        TokenErrorResponse tokenErrorResponse = new Gson().fromJson(response.errorBody().string(), TokenErrorResponse.class);
+                        Toast.makeText(currentLightingGuestActivity.this, "" + tokenErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

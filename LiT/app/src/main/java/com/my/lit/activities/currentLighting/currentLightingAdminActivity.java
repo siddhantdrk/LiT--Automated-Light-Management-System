@@ -12,8 +12,8 @@ import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityCurrentLightingAdminBinding;
 import com.my.lit.models.AreaDataItem;
 import com.my.lit.storage.SharedPreferenceManager;
-import com.my.responses.GetAllAreaErrorResponse;
 import com.my.responses.GetAllAreasResponse;
+import com.my.responses.TokenErrorResponse;
 
 import java.io.IOException;
 import java.util.List;
@@ -42,7 +42,7 @@ public class currentLightingAdminActivity extends AppCompatActivity {
         mProgress.setCanceledOnTouchOutside(false);
         mProgress.show();
         String token = SharedPreferenceManager.getInstance(this).getToken();
-        Call<GetAllAreasResponse> getAllAreasResponseCall = RetrofitClient.getInstance().getUserServices().getAllAreasGuest(token);
+        Call<GetAllAreasResponse> getAllAreasResponseCall = RetrofitClient.getInstance().getUserServices().getAllAreasAdmin(token);
         getAllAreasResponseCall.enqueue(new Callback<GetAllAreasResponse>() {
             @Override
             public void onResponse(Call<GetAllAreasResponse> call, Response<GetAllAreasResponse> response) {
@@ -52,8 +52,8 @@ public class currentLightingAdminActivity extends AppCompatActivity {
                     areaDataItemList = getAllAreasResponse.getData();
                 } else {
                     try {
-                        GetAllAreaErrorResponse getAllAreaErrorResponse = new Gson().fromJson(response.errorBody().string(), GetAllAreaErrorResponse.class);
-                        Toast.makeText(currentLightingAdminActivity.this, "" + getAllAreaErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        TokenErrorResponse tokenErrorResponse = new Gson().fromJson(response.errorBody().string(), TokenErrorResponse.class);
+                        Toast.makeText(currentLightingAdminActivity.this, "" + tokenErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

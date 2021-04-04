@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiT"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.currentLighting.currentLightDetailsActivity"></activity>
+        <activity android:name=".activities.currentLighting.currentLightDetailsAdminActivity"></activity>
+        <activity android:name=".activities.currentLighting.currentLightDetailsGuestActivity" />
         <activity android:name=".activities.currentLighting.currentLightingAdminActivity" />
         <activity android:name=".activities.currentLighting.currentLightingGuestActivity" />
         <activity android:name=".activities.ControlsLightAdminActivity" />
