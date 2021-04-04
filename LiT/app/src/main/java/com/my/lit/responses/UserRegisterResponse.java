@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class UserRegisterResponse implements Serializable {
+
     @SerializedName("token")
     private final String token;
     @SerializedName("user")

@@ -27,10 +27,25 @@
             android:layout_marginStart="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signUp_userName"
+                android:id="@+id/signUp_userFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="UserName"
+                android:hint="First Name"
+                android:textSize="16sp"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signUp_userLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Last Name"
                 android:textSize="16sp"
                 android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
