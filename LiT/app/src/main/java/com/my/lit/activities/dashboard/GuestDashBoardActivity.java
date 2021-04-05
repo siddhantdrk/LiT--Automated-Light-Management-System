@@ -41,6 +41,7 @@ public class GuestDashBoardActivity extends AppCompatActivity {
             case R.id.view_current_lighting_btn:
                 Intent intent = new Intent(this , currentLightingGuestActivity.class );
                 startActivity(intent);
+                break;
 
 
             case R.id.request_lighting_btn:

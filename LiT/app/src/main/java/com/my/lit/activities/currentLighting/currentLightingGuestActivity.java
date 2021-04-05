@@ -38,8 +38,8 @@ public class currentLightingGuestActivity extends AppCompatActivity implements V
         currentLightingGuestBinding = ActivityCurrentLightingGuestBinding.inflate(LayoutInflater.from(this));
         setContentView(currentLightingGuestBinding.getRoot());
         mProgress = new ProgressDialog(this);
-        getAllAreas();
 
+        getAllAreas();
         setupRecyclerView(areaDataItemList);
     }
 
