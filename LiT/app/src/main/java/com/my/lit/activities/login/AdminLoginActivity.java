@@ -62,35 +62,42 @@ public class AdminLoginActivity extends AppCompatActivity {
         String email = activityLoginBinding.signInEmail.getText().toString().trim();
         String password = activityLoginBinding.signInPassword.getText().toString().trim();
 
-        Call<AdminAuthResponse> adminLoginResponseCall = RetrofitClient.getInstance().getUserServices().adminLogin(email, password);
+        if(email.isEmpty()){
+            if(password.isEmpty()){
+                Call<AdminAuthResponse> adminLoginResponseCall = RetrofitClient.getInstance().getUserServices().adminLogin(email, password);
 
-        adminLoginResponseCall.enqueue(new Callback<AdminAuthResponse>() {
-            @Override
-            public void onResponse(Call<AdminAuthResponse> call, Response<AdminAuthResponse> response) {
-                mProgress.dismiss();
-                if (response.isSuccessful()) {
-                    AdminAuthResponse adminLoginResponse = response.body();
-                    SharedPreferenceManager.getInstance(AdminLoginActivity.this).saveToken(adminLoginResponse.getAdminData().getToken());
-                    startActivity(new Intent(AdminLoginActivity.this, AdminDashBoardActivity.class));
-                    Toast.makeText(AdminLoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    try {
-                        AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
-                        Toast.makeText(AdminLoginActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                adminLoginResponseCall.enqueue(new Callback<AdminAuthResponse>() {
+                    @Override
+                    public void onResponse(Call<AdminAuthResponse> call, Response<AdminAuthResponse> response) {
+                        mProgress.dismiss();
+                        if (response.isSuccessful()) {
+                            AdminAuthResponse adminLoginResponse = response.body();
+                            SharedPreferenceManager.getInstance(AdminLoginActivity.this).saveToken(adminLoginResponse.getAdminData().getToken());
+                            startActivity(new Intent(AdminLoginActivity.this, AdminDashBoardActivity.class));
+                            Toast.makeText(AdminLoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            try {
+                                AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
+                                Toast.makeText(AdminLoginActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
-                }
+
+                    @Override
+                    public void onFailure(Call<AdminAuthResponse> call, Throwable t) {
+                        mProgress.dismiss();
+                        Toast.makeText(AdminLoginActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+            }else{
+                activityLoginBinding.signInPassword.setError("Password field must be filled");
             }
-
-            @Override
-            public void onFailure(Call<AdminAuthResponse> call, Throwable t) {
-                mProgress.dismiss();
-                Toast.makeText(AdminLoginActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
+        }else{
+            activityLoginBinding.signInEmail.setError("Email field is empty");
+        }
     }
 }

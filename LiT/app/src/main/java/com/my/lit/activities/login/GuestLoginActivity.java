@@ -61,32 +61,42 @@ public class GuestLoginActivity extends AppCompatActivity {
         mProgress.show();
         String email = activityLoginBinding.signInEmail.getText().toString().trim();
         String password = activityLoginBinding.signInPassword.getText().toString().trim();
-        Call<GuestAuthResponse> userLoginResponseCall = RetrofitClient.getInstance().getUserServices().userLogin(email, password);
-        userLoginResponseCall.enqueue(new Callback<GuestAuthResponse>() {
-            @Override
-            public void onResponse(Call<GuestAuthResponse> call, Response<GuestAuthResponse> response) {
-                mProgress.dismiss();
-                if (response.isSuccessful()) {
-                    GuestAuthResponse guestAuthResponse = response.body();
-                    SharedPreferenceManager.getInstance(GuestLoginActivity.this).saveToken(guestAuthResponse.getGuestData().getToken());
-                    startActivity(new Intent(GuestLoginActivity.this, GuestDashBoardActivity.class));
-                    Toast.makeText(GuestLoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    try {
-                        AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
-                        Toast.makeText(GuestLoginActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
 
-            @Override
-            public void onFailure(Call<GuestAuthResponse> call, Throwable t) {
-                mProgress.dismiss();
-                Toast.makeText(GuestLoginActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+        if(email.isEmpty()) {
+            if (password.isEmpty()) {
+                Call<GuestAuthResponse> userLoginResponseCall = RetrofitClient.getInstance().getUserServices().userLogin(email, password);
+                userLoginResponseCall.enqueue(new Callback<GuestAuthResponse>() {
+                    @Override
+                    public void onResponse(Call<GuestAuthResponse> call, Response<GuestAuthResponse> response) {
+                        mProgress.dismiss();
+                        if (response.isSuccessful()) {
+                            GuestAuthResponse guestAuthResponse = response.body();
+                            SharedPreferenceManager.getInstance(GuestLoginActivity.this).saveToken(guestAuthResponse.getGuestData().getToken());
+                            startActivity(new Intent(GuestLoginActivity.this, GuestDashBoardActivity.class));
+                            Toast.makeText(GuestLoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            try {
+                                AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
+                                Toast.makeText(GuestLoginActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GuestAuthResponse> call, Throwable t) {
+                        mProgress.dismiss();
+                        Toast.makeText(GuestLoginActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                activityLoginBinding.signInPassword.setError("Password field must be filled");
             }
-        });
+        }else{
+            activityLoginBinding.signInEmail.setError("Email field is empty");
+        }
+
     }
 }
