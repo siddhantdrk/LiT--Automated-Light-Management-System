@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.my.lit.R;
 import com.my.lit.activities.ViewRoomsAdminActivity;
-import com.my.lit.activities.ViewRoomsUserActivity;
 import com.my.lit.activities.WelcomeActivity;
+import com.my.lit.activities.currentLighting.currentLightingGuestActivity;
 import com.my.lit.databinding.ActivityAdminDashBoardBinding;
 import com.my.lit.storage.SharedPreferenceManager;
 
@@ -37,7 +37,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.view_current_lighting_btn:
-                Intent intent = new Intent(AdminDashBoardActivity.this, ViewRoomsUserActivity.class);
+                Intent intent = new Intent(AdminDashBoardActivity.this, currentLightingGuestActivity.class);
                 intent.putExtra("From_GuestDashboard","ViewLightsAdmin");
 
                 startActivity(intent);

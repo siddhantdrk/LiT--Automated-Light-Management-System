@@ -36,6 +36,9 @@ public class currentLightDetailsGuestActivity extends AppCompatActivity {
         currentLightDetailsBinding = ActivityCurrentLightDetailsGuestBinding.inflate(LayoutInflater.from(this));
         setContentView(currentLightDetailsBinding.getRoot());
         getLightDetails();
+        areaId = getIntent().getStringExtra("Lights");
+
+
     }
 
     private void getLightDetails() {

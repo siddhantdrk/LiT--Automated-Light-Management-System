@@ -1,13 +1,17 @@
 package com.my.lit.activities.currentLighting;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.gson.Gson;
+import com.my.lit.activities.LightDetailsActivity;
+import com.my.lit.adapters.ViewRoomsAdapter;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityCurrentLightingGuestBinding;
 import com.my.lit.models.AreaDataItem;
@@ -22,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class currentLightingGuestActivity extends AppCompatActivity {
+public class currentLightingGuestActivity extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener{
 
     private List<AreaDataItem> areaDataItemList;
     private ProgressDialog mProgress;
@@ -35,7 +39,16 @@ public class currentLightingGuestActivity extends AppCompatActivity {
         setContentView(currentLightingGuestBinding.getRoot());
         mProgress = new ProgressDialog(this);
         getAllAreas();
+
+        setupRecyclerView(areaDataItemList);
     }
+
+    private void setupRecyclerView(List<AreaDataItem> areaDataItemList) {
+        ViewRoomsAdapter adapter = new ViewRoomsAdapter(areaDataItemList, this);
+        currentLightingGuestBinding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
+        currentLightingGuestBinding.viewLightsUserRv.setAdapter(adapter);
+    }
+
 
     private void getAllAreas() {
         mProgress.setTitle("Fetching Data");
@@ -67,5 +80,12 @@ public class currentLightingGuestActivity extends AppCompatActivity {
                 Toast.makeText(currentLightingGuestActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AreaDataItem item) {
+        Intent intent = new Intent(this, currentLightDetailsGuestActivity.class);
+        intent.putExtra("Lights", item.getId());
+        startActivity(intent);
     }
 }

@@ -58,6 +58,7 @@ public class GuestRegisterActivity extends AppCompatActivity {
         mProgress.setMessage("Please wait while we Register you");
         mProgress.setCanceledOnTouchOutside(false);
         mProgress.show();
+
         String email = activityRegisterBinding.signUpEmail.getText().toString().trim();
         String password = activityRegisterBinding.signUpPassword.getText().toString().trim();
         String confirmPassword = activityRegisterBinding.signUpConfirmPassword.getText().toString().trim();
@@ -65,6 +66,7 @@ public class GuestRegisterActivity extends AppCompatActivity {
         String lastName = activityRegisterBinding.signUpUserLastName.getText().toString().trim();
         if (!password.equals(confirmPassword)) {
             Toast.makeText(GuestRegisterActivity.this, "password does not match", Toast.LENGTH_LONG).show();
+            activityRegisterBinding.signUpPassword.setError("password does not match");
             mProgress.dismiss();
         } else {
             Call<GuestAuthResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, firstName, lastName);
@@ -78,7 +80,7 @@ public class GuestRegisterActivity extends AppCompatActivity {
                         startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
                         Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                         finish();
-                    } else {
+                    }else {
                         try {
                             AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
                             Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();

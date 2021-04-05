@@ -1,6 +1,7 @@
 package com.my.lit.activities.dashboard;
 
 import android.content.Intent;
+import android.icu.number.IntegerWidth;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.my.lit.R;
-import com.my.lit.activities.ViewRoomsUserActivity;
 import com.my.lit.activities.WelcomeActivity;
+import com.my.lit.activities.currentLighting.currentLightingGuestActivity;
 import com.my.lit.databinding.ActivityGuestDashBoardBinding;
 import com.my.lit.storage.SharedPreferenceManager;
 
@@ -38,15 +39,12 @@ public class GuestDashBoardActivity extends AppCompatActivity {
                 break;
 
             case R.id.view_current_lighting_btn:
-                Intent intent = new Intent(this, ViewRoomsUserActivity.class);
-                intent.putExtra("From_GuestDashboard","ViewLights");
+                Intent intent = new Intent(this , currentLightingGuestActivity.class );
                 startActivity(intent);
-                break;
+
 
             case R.id.request_lighting_btn:
-                Intent intent1 = new Intent(this,ViewRoomsUserActivity.class);
-                intent1.putExtra("From_GuestDashboard","SendRequest");
-                startActivity(intent1);
+
                 break;
         }
     }

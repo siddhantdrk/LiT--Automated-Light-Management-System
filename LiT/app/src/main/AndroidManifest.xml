@@ -21,7 +21,6 @@
         <activity android:name=".activities.RequestLighting" />
         <activity android:name=".activities.ViewRoomsAdminActivity" />
         <activity android:name=".activities.LightDetailsActivity" />
-        <activity android:name=".activities.ViewRoomsUserActivity" />
         <activity android:name=".activities.register.GuestRegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

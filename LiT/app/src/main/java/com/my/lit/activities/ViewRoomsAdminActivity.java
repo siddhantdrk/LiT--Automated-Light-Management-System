@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
-import com.my.lit.R;
 import com.my.lit.adapters.ViewRoomsAdapter;
 import com.my.lit.databinding.ActivityViewLightsUserBinding;
 import com.my.lit.models.Room;
@@ -94,10 +93,10 @@ public class ViewRoomsAdminActivity extends AppCompatActivity {
 
         switch (toCheckFromAdminDashBoard){
             case "ControlLights":
-                setUpControlLightsRecyclerView(list);
+                //setUpControlLightsRecyclerView(list);
 
             case "SendRequest":
-                setUpRecyclerView(list);
+                //setUpRecyclerView(list);
         }
 
 
@@ -106,11 +105,11 @@ public class ViewRoomsAdminActivity extends AppCompatActivity {
     private void setUpRecyclerView(ArrayList<Room> list) {
     }
 
-    private void setUpControlLightsRecyclerView(ArrayList<Room> list) {
-        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list,this::onItemControlClick);
-        binding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
-        binding.viewLightsUserRv.setAdapter(adapter);
-    }
+//    private void setUpControlLightsRecyclerView(ArrayList<Room> list) {
+//        ViewRoomsAdapter adapter = new ViewRoomsAdapter(list, item -> onItemControlClick(item));
+//        binding.viewLightsUserRv.setLayoutManager(new LinearLayoutManager(this));
+//        binding.viewLightsUserRv.setAdapter(adapter);
+//    }
 
     public void onItemControlClick(Room item) {
         Intent intent = new Intent(this, ControlsLightAdminActivity.class);
