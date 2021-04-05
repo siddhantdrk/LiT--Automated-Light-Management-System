@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Password(at least 8 character)"
                 android:textSize="16sp"
-                android:inputType="numberPassword" />
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Confirm Password"
                 android:textSize="16sp"
-                android:inputType="numberPassword"/>
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

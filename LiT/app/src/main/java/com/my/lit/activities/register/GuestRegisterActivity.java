@@ -64,38 +64,62 @@ public class GuestRegisterActivity extends AppCompatActivity {
         String confirmPassword = activityRegisterBinding.signUpConfirmPassword.getText().toString().trim();
         String firstName = activityRegisterBinding.signUpUserFirstName.getText().toString().trim();
         String lastName = activityRegisterBinding.signUpUserLastName.getText().toString().trim();
-        if (!password.equals(confirmPassword)) {
-            Toast.makeText(GuestRegisterActivity.this, "password does not match", Toast.LENGTH_LONG).show();
-            activityRegisterBinding.signUpPassword.setError("password does not match");
-            mProgress.dismiss();
-        } else {
-            Call<GuestAuthResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, firstName, lastName);
-            registerResponseCall.enqueue(new Callback<GuestAuthResponse>() {
-                @Override
-                public void onResponse(Call<GuestAuthResponse> call, Response<GuestAuthResponse> response) {
-                    mProgress.dismiss();
-                    if (response.isSuccessful()) {
-                        GuestAuthResponse guestAuthResponse = response.body();
-                        SharedPreferenceManager.getInstance(GuestRegisterActivity.this).saveToken(guestAuthResponse.getGuestData().getToken());
-                        startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
-                        Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }else {
-                        try {
-                            AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
-                            Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
+        if (!email.isEmpty()) {
+            if(!firstName.isEmpty()){
+                if(!lastName.isEmpty()){
+                    if(!password.isEmpty()){
+                        if(!confirmPassword.isEmpty()){
+                            if(password.equals(confirmPassword)) {
+                                Call<GuestAuthResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, firstName, lastName);
+                                registerResponseCall.enqueue(new Callback<GuestAuthResponse>() {
+                                    @Override
+                                    public void onResponse(Call<GuestAuthResponse> call, Response<GuestAuthResponse> response) {
+                                        mProgress.dismiss();
+                                        if (response.isSuccessful()) {
+                                            GuestAuthResponse guestAuthResponse = response.body();
+                                            SharedPreferenceManager.getInstance(GuestRegisterActivity.this).saveToken(guestAuthResponse.getGuestData().getToken());
+                                            startActivity(new Intent(GuestRegisterActivity.this, GuestDashBoardActivity.class));
+                                            Toast.makeText(GuestRegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else {
+                                            try {
+                                                AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
+                                                Toast.makeText(GuestRegisterActivity.this, "" + authErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }
 
-                @Override
-                public void onFailure(Call<GuestAuthResponse> call, Throwable t) {
+                                    @Override
+                                    public void onFailure(Call<GuestAuthResponse> call, Throwable t) {
+                                        mProgress.dismiss();
+                                        Toast.makeText(GuestRegisterActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }else{
+                                activityRegisterBinding.signUpPassword.setError("password does not match");
+                                mProgress.dismiss();
+                            }
+                        }else{
+                            activityRegisterBinding.signUpConfirmPassword.setError("password field should not kept empty");
+                            mProgress.dismiss();
+                        }
+                    }else{
+                        activityRegisterBinding.signUpPassword.setError("password field should not kept empty");
+                        mProgress.dismiss();
+                    }
+                }else{
+                    activityRegisterBinding.signUpUserLastName.setError("last name must not remain empty");
                     mProgress.dismiss();
-                    Toast.makeText(GuestRegisterActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            });
+            }else{
+                activityRegisterBinding.signUpUserFirstName.setError("first name must not remain empty");
+                mProgress.dismiss();
+            }
+        }else{
+            activityRegisterBinding.signUpEmail.setError("Email is Empty");
+            mProgress.dismiss();
         }
     }
 }
