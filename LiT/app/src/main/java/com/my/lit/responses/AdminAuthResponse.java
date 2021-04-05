@@ -5,7 +5,7 @@ import com.my.lit.models.AdminData;
 
 public class AdminAuthResponse {
 
-    @SerializedName("adminData")
+    @SerializedName("data")
     private AdminData adminData;
 
     @SerializedName("success")

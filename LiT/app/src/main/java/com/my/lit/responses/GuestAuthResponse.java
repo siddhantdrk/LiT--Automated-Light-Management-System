@@ -5,7 +5,7 @@ import com.my.lit.models.GuestData;
 
 public class GuestAuthResponse {
 
-    @SerializedName("guestData")
+    @SerializedName("data")
     private GuestData guestData;
 
     @SerializedName("success")

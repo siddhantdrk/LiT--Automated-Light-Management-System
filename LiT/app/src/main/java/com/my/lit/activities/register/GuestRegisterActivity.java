@@ -61,11 +61,13 @@ public class GuestRegisterActivity extends AppCompatActivity {
         String email = activityRegisterBinding.signUpEmail.getText().toString().trim();
         String password = activityRegisterBinding.signUpPassword.getText().toString().trim();
         String confirmPassword = activityRegisterBinding.signUpConfirmPassword.getText().toString().trim();
+        String firstName = activityRegisterBinding.signUpUserFirstName.getText().toString().trim();
+        String lastName = activityRegisterBinding.signUpUserLastName.getText().toString().trim();
         if (!password.equals(confirmPassword)) {
             Toast.makeText(GuestRegisterActivity.this, "password does not match", Toast.LENGTH_LONG).show();
             mProgress.dismiss();
         } else {
-            Call<GuestAuthResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, "rahul", "dev");
+            Call<GuestAuthResponse> registerResponseCall = RetrofitClient.getInstance().getUserServices().userRegister(email, confirmPassword, firstName, lastName);
             registerResponseCall.enqueue(new Callback<GuestAuthResponse>() {
                 @Override
                 public void onResponse(Call<GuestAuthResponse> call, Response<GuestAuthResponse> response) {

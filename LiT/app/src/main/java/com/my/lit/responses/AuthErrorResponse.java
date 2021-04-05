@@ -5,7 +5,7 @@ import com.my.lit.models.AuthErrorData;
 
 public class AuthErrorResponse {
 
-    @SerializedName("authErrorData")
+    @SerializedName("data")
     private AuthErrorData authErrorData;
 
     @SerializedName("success")
