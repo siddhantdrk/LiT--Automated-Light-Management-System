@@ -1,6 +1,8 @@
 package com.my.lit.adapters;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +69,16 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
             @Override
             public void onClick(View view) {
                 //switch (holder.LightStatus)
+                ProgressDialog progressDialog = new ProgressDialog(context);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.setTitle("Updating...");
+                        progressDialog.setMessage("Please wait while we are updating your Light status");
+                        progressDialog.show();
+                    }
+                }, 1500);
+                progressDialog.dismiss();
                 if (lightDataItem.isStatus()) {
                     updateLightStatus(new UpdateLightStatus(lightDataItem.getId(), false), holder, position);
                 } else {
