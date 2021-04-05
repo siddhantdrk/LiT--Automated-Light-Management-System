@@ -1,4 +1,4 @@
-package com.my.lit.activities.register;
+package com.my.lit.activities.controlLight;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;

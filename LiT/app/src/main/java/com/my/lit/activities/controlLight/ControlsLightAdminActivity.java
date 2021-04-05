@@ -1,4 +1,4 @@
-package com.my.lit.activities;
+package com.my.lit.activities.controlLight;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.my.lit.activities.register.ControlLightDetailsAdminActivity;
 import com.my.lit.adapters.ViewRoomsAdapter;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityControlsLightAdminBinding;

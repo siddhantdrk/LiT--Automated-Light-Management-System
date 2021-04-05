@@ -13,12 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiT"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.register.ControlLightDetailsAdminActivity"></activity>
+        <activity android:name=".activities.controlLight.ControlLightDetailsAdminActivity"></activity>
         <activity android:name=".activities.currentLighting.currentLightDetailsAdminActivity" />
         <activity android:name=".activities.currentLighting.currentLightDetailsGuestActivity" />
         <activity android:name=".activities.currentLighting.currentLightingAdminActivity" />
         <activity android:name=".activities.currentLighting.currentLightingGuestActivity" />
-        <activity android:name=".activities.ControlsLightAdminActivity" />
+        <activity android:name=".activities.controlLight.ControlsLightAdminActivity" />
         <activity android:name=".activities.GuestRequestLightingActivity" />
         <activity android:name=".activities.ViewRoomsAdminActivity" />
         <activity android:name=".activities.register.GuestRegisterActivity" />

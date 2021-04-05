@@ -1,13 +1,12 @@
 package com.my.lit.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 
-import com.my.lit.adapters.ViewRoomsAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.my.lit.activities.controlLight.ControlsLightAdminActivity;
 import com.my.lit.databinding.ActivityViewLightsUserBinding;
 import com.my.lit.models.Room;
 

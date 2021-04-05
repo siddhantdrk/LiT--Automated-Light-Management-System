@@ -8,8 +8,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.my.lit.R;
-import com.my.lit.activities.ControlsLightAdminActivity;
 import com.my.lit.activities.WelcomeActivity;
+import com.my.lit.activities.controlLight.ControlsLightAdminActivity;
 import com.my.lit.activities.currentLighting.currentLightingAdminActivity;
 import com.my.lit.databinding.ActivityAdminDashBoardBinding;
 import com.my.lit.storage.SharedPreferenceManager;
