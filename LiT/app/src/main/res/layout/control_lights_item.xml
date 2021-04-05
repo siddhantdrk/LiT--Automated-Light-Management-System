@@ -43,7 +43,9 @@
             android:textColor="#6C5503"
             app:layout_constraintStart_toEndOf="@+id/bulb"
             app:layout_constraintTop_toBottomOf="@+id/light_name"
-            android:layout_marginStart="32dp"
+            app:layout_constraintBottom_toTopOf="@id/impressionValueContainer"
+            app:layout_constraintEnd_toStartOf="@id/switch_btn"
+            android:layout_marginStart="16dp"
             android:padding="8dp"
             android:layout_marginEnd="16dp"/>
 
@@ -51,12 +53,69 @@
             android:id="@+id/switch_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@id/light_status"
             app:layout_constraintTop_toBottomOf="@id/light_name"
             app:cornerRadius="32dp"
             android:layout_marginStart="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/impressionValueContainer"
             android:text="Switch"
-            app:backgroundTint="#F83217"/>
+            app:backgroundTint="#F83217"
+            android:layout_marginEnd="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/impressionValueContainer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@id/bulb"
+            app:layout_constraintTop_toBottomOf="@id/light_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I-ON - "
+                            android:layout_marginEnd="8dp"/>
+
+                        <TextView
+                            android:id="@+id/impressionOnValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I-OFF - "
+                            android:layout_marginEnd="8dp"/>
+
+                        <TextView
+                            android:id="@+id/impressionOffValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"/>
+                </LinearLayout>
+        </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
