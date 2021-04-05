@@ -54,16 +54,15 @@ public class AdminLoginActivity extends AppCompatActivity {
 
     private void login() {
 
-        mProgress.setTitle("Logging in");
-        mProgress.setMessage("Please wait while we are fetching your account");
-        mProgress.setCanceledOnTouchOutside(false);
-        mProgress.show();
-
         String email = activityLoginBinding.signInEmail.getText().toString().trim();
         String password = activityLoginBinding.signInPassword.getText().toString().trim();
 
         if(!email.isEmpty()){
             if(!password.isEmpty()){
+                mProgress.setTitle("Logging in");
+                mProgress.setMessage("Please wait while we are fetching your account");
+                mProgress.setCanceledOnTouchOutside(false);
+                mProgress.show();
                 Call<AdminAuthResponse> adminLoginResponseCall = RetrofitClient.getInstance().getUserServices().adminLogin(email, password);
 
                 adminLoginResponseCall.enqueue(new Callback<AdminAuthResponse>() {

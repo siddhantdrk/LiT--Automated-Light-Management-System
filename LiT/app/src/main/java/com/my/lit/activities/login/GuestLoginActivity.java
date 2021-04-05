@@ -55,15 +55,16 @@ public class GuestLoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-        mProgress.setTitle("Logging in");
-        mProgress.setMessage("Please wait while we fetching your login account");
-        mProgress.setCanceledOnTouchOutside(false);
-        mProgress.show();
+
         String email = activityLoginBinding.signInEmail.getText().toString().trim();
         String password = activityLoginBinding.signInPassword.getText().toString().trim();
 
         if(!email.isEmpty()) {
             if (!password.isEmpty()) {
+                mProgress.setTitle("Logging in");
+                mProgress.setMessage("Please wait while we fetching your login account");
+                mProgress.setCanceledOnTouchOutside(false);
+                mProgress.show();
                 Call<GuestAuthResponse> userLoginResponseCall = RetrofitClient.getInstance().getUserServices().userLogin(email, password);
                 userLoginResponseCall.enqueue(new Callback<GuestAuthResponse>() {
                     @Override

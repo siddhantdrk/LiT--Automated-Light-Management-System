@@ -61,7 +61,8 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
             holder.LightStatus.setTextColor(context.getResources().getColor(R.color.red));
             holder.Bulb.setImageResource(R.drawable.off_bulb);
         }
-
+        holder.impsOnValue.setText(String.valueOf(lightDataItem.getImpressionsON()));
+        holder.impsOffValue.setText(String.valueOf(lightDataItem.getImpressionsOFF()));
         holder.switchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,6 +127,7 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
         TextView LightStatus;
         ImageView Bulb;
         MaterialButton switchBtn;
+        TextView impsOnValue,impsOffValue;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -134,6 +136,8 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
             LightStatus = itemView.findViewById(R.id.light_status);
             Bulb = itemView.findViewById(R.id.bulb);
             switchBtn = itemView.findViewById(R.id.switch_btn);
+            impsOnValue=itemView.findViewById(R.id.impressionOnValue);
+            impsOffValue=itemView.findViewById(R.id.impressionOffValue);
         }
     }
 }
