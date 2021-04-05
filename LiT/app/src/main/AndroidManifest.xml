@@ -14,21 +14,21 @@
         android:theme="@style/Theme.LiT"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.currentLighting.currentLightDetailsAdminActivity"></activity>
-        <activity android:name=".activities.currentLighting.currentLightDetailsGuestActivity" />
+        <activity android:name=".activities.currentLighting.currentLightDetailsGuestActivity"></activity>
         <activity android:name=".activities.currentLighting.currentLightingAdminActivity" />
         <activity android:name=".activities.currentLighting.currentLightingGuestActivity" />
         <activity android:name=".activities.ControlsLightAdminActivity" />
         <activity android:name=".activities.RequestLighting" />
         <activity android:name=".activities.ViewRoomsAdminActivity" />
         <activity android:name=".activities.LightDetailsActivity" />
-        <activity android:name=".activities.register.GuestRegisterActivity">
+        <activity android:name=".activities.register.GuestRegisterActivity"></activity>
+        <activity android:name=".activities.login.GuestLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.login.GuestLoginActivity" />
         <activity android:name=".activities.register.AdminRegisterActivity" />
         <activity android:name=".activities.dashboard.GuestDashBoardActivity" />
         <activity android:name=".activities.dashboard.AdminDashBoardActivity" />

@@ -43,7 +43,7 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
         mProgress.setMessage("Please wait while we fetch your data");
         mProgress.setCanceledOnTouchOutside(false);
         mProgress.show();
-        token = SharedPreferenceManager.getInstance(this).getToken();
+        token = "token " + SharedPreferenceManager.getInstance(this).getToken();
         Call<GetLightsByAreaIdResponse> getLightsByAreaIdResponseCall = RetrofitClient.getInstance().getUserServices().getLightsByAreaIdAdmin(areaId, token);
         getLightsByAreaIdResponseCall.enqueue(new Callback<GetLightsByAreaIdResponse>() {
             @Override

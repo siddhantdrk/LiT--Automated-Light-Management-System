@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.gson.Gson;
-import com.my.lit.activities.LightDetailsActivity;
 import com.my.lit.adapters.ViewRoomsAdapter;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityCurrentLightingGuestBinding;
@@ -38,9 +37,7 @@ public class currentLightingGuestActivity extends AppCompatActivity implements V
         currentLightingGuestBinding = ActivityCurrentLightingGuestBinding.inflate(LayoutInflater.from(this));
         setContentView(currentLightingGuestBinding.getRoot());
         mProgress = new ProgressDialog(this);
-
         getAllAreas();
-        setupRecyclerView(areaDataItemList);
     }
 
     private void setupRecyclerView(List<AreaDataItem> areaDataItemList) {
@@ -55,7 +52,7 @@ public class currentLightingGuestActivity extends AppCompatActivity implements V
         mProgress.setMessage("Please wait while we fetch your data");
         mProgress.setCanceledOnTouchOutside(false);
         mProgress.show();
-        String token = SharedPreferenceManager.getInstance(this).getToken();
+        String token = "token " + SharedPreferenceManager.getInstance(this).getToken();
         Call<GetAllAreasResponse> getAllAreasResponseCall = RetrofitClient.getInstance().getUserServices().getAllAreasGuest(token);
         getAllAreasResponseCall.enqueue(new Callback<GetAllAreasResponse>() {
             @Override
@@ -64,6 +61,7 @@ public class currentLightingGuestActivity extends AppCompatActivity implements V
                 if (response.isSuccessful()) {
                     GetAllAreasResponse getAllAreasResponse = response.body();
                     areaDataItemList = getAllAreasResponse.getData();
+                    setupRecyclerView(areaDataItemList);
                 } else {
                     try {
                         TokenErrorResponse tokenErrorResponse = new Gson().fromJson(response.errorBody().string(), TokenErrorResponse.class);
