@@ -1,4 +1,4 @@
-package com.my.lit.activities.controlLight;
+package com.my.lit.activities.guestRequest;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.my.lit.adapters.ViewRoomsAdapter;
 import com.my.lit.api.RetrofitClient;
-import com.my.lit.databinding.ActivityControlsLightAdminBinding;
+import com.my.lit.databinding.ActivityGuestRequestLightingBinding;
 import com.my.lit.models.AreaDataItem;
 import com.my.lit.responses.GetAllAreasResponse;
 import com.my.lit.responses.TokenErrorResponse;
@@ -24,17 +24,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ControlsLightAdminActivity extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener {
+public class GuestRequestLightingActivity extends AppCompatActivity implements ViewRoomsAdapter.OnItemClickListener {
 
-    private ActivityControlsLightAdminBinding binding;
+    private ActivityGuestRequestLightingBinding requestLightingBinding;
     private List<AreaDataItem> areaDataItemList;
     private ProgressDialog mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityControlsLightAdminBinding.inflate(LayoutInflater.from(this));
-        setContentView(binding.getRoot());
+        requestLightingBinding = ActivityGuestRequestLightingBinding.inflate(LayoutInflater.from(this));
+        setContentView(requestLightingBinding.getRoot());
         mProgress = new ProgressDialog(this);
         getAllAreas();
     }
@@ -57,7 +57,7 @@ public class ControlsLightAdminActivity extends AppCompatActivity implements Vie
                 } else {
                     try {
                         TokenErrorResponse tokenErrorResponse = new Gson().fromJson(response.errorBody().string(), TokenErrorResponse.class);
-                        Toast.makeText(ControlsLightAdminActivity.this, "" + tokenErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GuestRequestLightingActivity.this, "" + tokenErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -67,19 +67,19 @@ public class ControlsLightAdminActivity extends AppCompatActivity implements Vie
             @Override
             public void onFailure(Call<GetAllAreasResponse> call, Throwable t) {
                 mProgress.dismiss();
-                Toast.makeText(ControlsLightAdminActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(GuestRequestLightingActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void setData() {
         ViewRoomsAdapter adapter = new ViewRoomsAdapter(areaDataItemList, this);
-        binding.controlLightsRoomRv.setAdapter(adapter);
+        requestLightingBinding.requestLightsRoomRv.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(AreaDataItem item) {
-        Intent intent = new Intent(this, ControlLightDetailsAdminActivity.class);
+        Intent intent = new Intent(this, GuestRequestLightingDetailsActivity.class);
         intent.putExtra("AreaId", item.getId());
         startActivity(intent);
     }

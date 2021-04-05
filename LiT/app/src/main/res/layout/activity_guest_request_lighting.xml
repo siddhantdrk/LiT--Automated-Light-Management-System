@@ -3,6 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.GuestRequestLightingActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.guestRequest.GuestRequestLightingActivity">
+
+    <TextView
+        android:id="@+id/header_lights"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#F3DCDC"
+        android:gravity="center_horizontal"
+        android:text="REQUEST LIGHTS"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/request_lights_room_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_lights" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
