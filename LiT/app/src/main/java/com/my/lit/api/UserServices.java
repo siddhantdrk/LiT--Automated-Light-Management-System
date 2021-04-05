@@ -1,11 +1,14 @@
 package com.my.lit.api;
 
+import com.my.lit.models.UpdateLightStatus;
 import com.my.lit.responses.AdminAuthResponse;
 import com.my.lit.responses.GetAllAreasResponse;
 import com.my.lit.responses.GetLightsByAreaIdResponse;
 import com.my.lit.responses.GuestAuthResponse;
+import com.my.lit.responses.UpdateLightStatusResponse;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -58,6 +61,12 @@ public interface UserServices {
     @GET("api/v1/user/bulbs/area/{AREA_ID}/")
     Call<GetLightsByAreaIdResponse> getLightsByAreaIdGuest(
             @Path("AREA_ID") String areaId,
+            @Header("Authorization") String token
+    );
+
+    @POST("api/v1/admin/set/bulb/")
+    Call<UpdateLightStatusResponse> updateLightStatus(
+            @Body UpdateLightStatus update,
             @Header("Authorization") String token
     );
 }

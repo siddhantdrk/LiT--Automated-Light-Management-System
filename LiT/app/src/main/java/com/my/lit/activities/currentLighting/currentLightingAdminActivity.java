@@ -46,7 +46,7 @@ public class currentLightingAdminActivity extends AppCompatActivity implements V
     }
 
     private void getAllAreas() {
-        mProgress.setTitle("Fetching Data");
+        mProgress.setTitle("Fetching UpdateLightStatusData");
         mProgress.setMessage("Please wait while we fetch your data");
         mProgress.setCanceledOnTouchOutside(false);
         mProgress.show();

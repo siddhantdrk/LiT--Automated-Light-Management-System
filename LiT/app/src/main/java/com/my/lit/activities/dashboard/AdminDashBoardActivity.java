@@ -8,7 +8,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.my.lit.R;
-import com.my.lit.activities.ViewRoomsAdminActivity;
+import com.my.lit.activities.ControlsLightAdminActivity;
 import com.my.lit.activities.WelcomeActivity;
 import com.my.lit.activities.currentLighting.currentLightingAdminActivity;
 import com.my.lit.databinding.ActivityAdminDashBoardBinding;
@@ -41,8 +41,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.control_lighting_btn:
-                Intent intent2 = new Intent(AdminDashBoardActivity.this, ViewRoomsAdminActivity.class);
-                intent2.putExtra("From_AdminDashboard","ControlLights");
+                Intent intent2 = new Intent(AdminDashBoardActivity.this, ControlsLightAdminActivity.class);
                 startActivity(intent2);
                 break;
 //            case R.id.see_user_request_btn:

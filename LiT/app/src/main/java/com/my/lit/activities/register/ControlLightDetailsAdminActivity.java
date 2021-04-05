@@ -1,4 +1,4 @@
-package com.my.lit.activities.currentLighting;
+package com.my.lit.activities.register;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.my.lit.adapters.ViewLightsAdapter;
+import com.my.lit.adapters.ControlLightsAdapter;
 import com.my.lit.api.RetrofitClient;
-import com.my.lit.databinding.ActivityCurrentLightDetailsAdminBinding;
+import com.my.lit.databinding.ActivityControlLightDetailsAdminBinding;
 import com.my.lit.models.LightDataItem;
 import com.my.lit.responses.GetLightsByAreaIdResponse;
 import com.my.lit.responses.TokenErrorResponse;
@@ -23,9 +23,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class currentLightDetailsAdminActivity extends AppCompatActivity {
+public class ControlLightDetailsAdminActivity extends AppCompatActivity {
 
-    private ActivityCurrentLightDetailsAdminBinding currentLightDetailsAdminBinding;
+    private ActivityControlLightDetailsAdminBinding controlLightDetailsAdminBinding;
     private List<LightDataItem> lightDataItemList;
     private ProgressDialog mProgress;
     private String areaId;
@@ -34,8 +34,8 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        currentLightDetailsAdminBinding = ActivityCurrentLightDetailsAdminBinding.inflate(LayoutInflater.from(this));
-        setContentView(currentLightDetailsAdminBinding.getRoot());
+        controlLightDetailsAdminBinding = ActivityControlLightDetailsAdminBinding.inflate(LayoutInflater.from(this));
+        setContentView(controlLightDetailsAdminBinding.getRoot());
         mProgress = new ProgressDialog(this);
         areaId = getIntent().getStringExtra("AreaId");
         getLightDetails();
@@ -59,7 +59,7 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
                 } else {
                     try {
                         TokenErrorResponse tokenErrorResponse = new Gson().fromJson(response.errorBody().string(), TokenErrorResponse.class);
-                        Toast.makeText(currentLightDetailsAdminActivity.this, "" + tokenErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ControlLightDetailsAdminActivity.this, "" + tokenErrorResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -69,12 +69,13 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<GetLightsByAreaIdResponse> call, Throwable t) {
                 mProgress.dismiss();
-                Toast.makeText(currentLightDetailsAdminActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ControlLightDetailsAdminActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void setData() {
-        currentLightDetailsAdminBinding.lightDetailsRv.setAdapter(new ViewLightsAdapter(lightDataItemList, this));
+        ControlLightsAdapter adapter = new ControlLightsAdapter(lightDataItemList, this);
+        controlLightDetailsAdminBinding.controlLightsDetailsRv.setAdapter(adapter);
     }
 }
