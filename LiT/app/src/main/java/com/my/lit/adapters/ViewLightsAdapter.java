@@ -11,19 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.my.lit.R;
+import com.my.lit.models.LightDataItem;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.ViewHolder> {
-    ArrayList<String> lightNames ;
-    ArrayList<Boolean> lightStatus ;
+    private final List<LightDataItem> lightDataItemList;
     Context context;
 
-
-
-    public ViewLightsAdapter(Context context,ArrayList<String> lightnames, ArrayList<Boolean> lightstatus) {
-        this.lightNames = lightnames;
-        this.lightStatus = lightstatus;
+    public ViewLightsAdapter(List<LightDataItem> lightDataItemList, Context context) {
+        this.lightDataItemList = lightDataItemList;
         this.context = context;
     }
 
@@ -32,23 +29,23 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.light_item,parent,false);
+        View view = layoutInflater.inflate(R.layout.light_item, parent, false);
 
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.LightName.setText(lightNames.get(position));
-        if(lightStatus.get(position)){
+        LightDataItem lightDataItem = lightDataItemList.get(position);
+        holder.LightName.setText(lightDataItem.getName());
+        if (lightDataItem.isStatus()) {
             holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.yellow_light));
             holder.LightStatus.setText("ON");
-            holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
-        }
-        else{
+            holder.LightStatus.setTextColor(context.getResources().getColor(R.color.green));
+        } else {
             holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.white));
             holder.LightStatus.setText("OFF");
-            holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
+            holder.LightStatus.setTextColor(context.getResources().getColor(R.color.red));
             holder.Bulb.setImageResource(R.drawable.off_bulb);
         }
 
@@ -56,18 +53,17 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return lightNames.size();
+        return lightDataItemList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView LightName;
-        TextView LightStatus;
-        ImageView Bulb;
+        private final TextView LightName;
+        private final TextView LightStatus;
+        private final ImageView Bulb;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             LightName = itemView.findViewById(R.id.light_name);
             LightStatus = itemView.findViewById(R.id.light_status);
             Bulb = itemView.findViewById(R.id.bulb);

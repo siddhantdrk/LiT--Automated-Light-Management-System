@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.my.lit.adapters.ViewLightsAdapter;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityCurrentLightDetailsGuestBinding;
 import com.my.lit.models.LightDataItem;
@@ -24,7 +25,7 @@ import retrofit2.Response;
 
 public class currentLightDetailsGuestActivity extends AppCompatActivity {
 
-    private ActivityCurrentLightDetailsGuestBinding currentLightDetailsBinding;
+    private ActivityCurrentLightDetailsGuestBinding currentLightDetailsGuestBinding;
     private List<LightDataItem> lightDataItemList;
     private ProgressDialog mProgress;
     private String areaId;
@@ -33,8 +34,8 @@ public class currentLightDetailsGuestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        currentLightDetailsBinding = ActivityCurrentLightDetailsGuestBinding.inflate(LayoutInflater.from(this));
-        setContentView(currentLightDetailsBinding.getRoot());
+        currentLightDetailsGuestBinding = ActivityCurrentLightDetailsGuestBinding.inflate(LayoutInflater.from(this));
+        setContentView(currentLightDetailsGuestBinding.getRoot());
         mProgress = new ProgressDialog(this);
         areaId = getIntent().getStringExtra("AreaId");
         getLightDetails();
@@ -54,6 +55,7 @@ public class currentLightDetailsGuestActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     GetLightsByAreaIdResponse getLightsByAreaIdResponse = response.body();
                     lightDataItemList = getLightsByAreaIdResponse.getData();
+                    setData();
                 } else {
                     try {
                         TokenErrorResponse tokenErrorResponse = new Gson().fromJson(response.errorBody().string(), TokenErrorResponse.class);
@@ -70,5 +72,9 @@ public class currentLightDetailsGuestActivity extends AppCompatActivity {
                 Toast.makeText(currentLightDetailsGuestActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setData() {
+        currentLightDetailsGuestBinding.lightDetailsRv.setAdapter(new ViewLightsAdapter(lightDataItemList, this));
     }
 }

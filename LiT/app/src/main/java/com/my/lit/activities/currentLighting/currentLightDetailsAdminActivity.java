@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.my.lit.adapters.ViewLightsAdapter;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityCurrentLightDetailsAdminBinding;
 import com.my.lit.models.LightDataItem;
@@ -36,6 +37,7 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
         currentLightDetailsAdminBinding = ActivityCurrentLightDetailsAdminBinding.inflate(LayoutInflater.from(this));
         setContentView(currentLightDetailsAdminBinding.getRoot());
         mProgress = new ProgressDialog(this);
+        areaId = getIntent().getStringExtra("AreaId");
         getLightDetails();
     }
 
@@ -53,6 +55,7 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     GetLightsByAreaIdResponse getLightsByAreaIdResponse = response.body();
                     lightDataItemList = getLightsByAreaIdResponse.getData();
+                    setData();
                 } else {
                     try {
                         TokenErrorResponse tokenErrorResponse = new Gson().fromJson(response.errorBody().string(), TokenErrorResponse.class);
@@ -69,5 +72,9 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
                 Toast.makeText(currentLightDetailsAdminActivity.this, "Something went wrong\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setData() {
+        currentLightDetailsAdminBinding.lightDetailsRv.setAdapter(new ViewLightsAdapter(lightDataItemList, this));
     }
 }
