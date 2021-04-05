@@ -1,12 +1,14 @@
-package com.my.responses;
+package com.my.lit.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.my.lit.models.AuthErrorData;
+import com.my.lit.models.AreaDataItem;
 
-public class AuthErrorResponse {
+import java.util.List;
 
-    @SerializedName("authErrorData")
-    private AuthErrorData authErrorData;
+public class GetAllAreasResponse {
+
+    @SerializedName("data")
+    private List<AreaDataItem> data;
 
     @SerializedName("success")
     private boolean success;
@@ -14,12 +16,12 @@ public class AuthErrorResponse {
     @SerializedName("message")
     private String message;
 
-    public AuthErrorData getAuthErrorData() {
-        return authErrorData;
+    public List<AreaDataItem> getData() {
+        return data;
     }
 
-    public void setAuthErrorData(AuthErrorData authErrorData) {
-        this.authErrorData = authErrorData;
+    public void setData(List<AreaDataItem> data) {
+        this.data = data;
     }
 
     public boolean isSuccess() {

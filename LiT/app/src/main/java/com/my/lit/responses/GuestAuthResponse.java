@@ -1,14 +1,12 @@
-package com.my.responses;
+package com.my.lit.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.my.lit.models.AreaDataItem;
+import com.my.lit.models.GuestData;
 
-import java.util.List;
+public class GuestAuthResponse {
 
-public class GetAllAreasResponse {
-
-    @SerializedName("data")
-    private List<AreaDataItem> data;
+    @SerializedName("guestData")
+    private GuestData guestData;
 
     @SerializedName("success")
     private boolean success;
@@ -16,12 +14,12 @@ public class GetAllAreasResponse {
     @SerializedName("message")
     private String message;
 
-    public List<AreaDataItem> getData() {
-        return data;
+    public GuestData getGuestData() {
+        return guestData;
     }
 
-    public void setData(List<AreaDataItem> data) {
-        this.data = data;
+    public void setGuestData(GuestData guestData) {
+        this.guestData = guestData;
     }
 
     public boolean isSuccess() {

@@ -1,12 +1,12 @@
-package com.my.responses;
+package com.my.lit.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.my.lit.models.GuestData;
+import com.my.lit.models.AdminData;
 
-public class GuestAuthResponse {
+public class AdminAuthResponse {
 
-    @SerializedName("guestData")
-    private GuestData guestData;
+    @SerializedName("adminData")
+    private AdminData adminData;
 
     @SerializedName("success")
     private boolean success;
@@ -14,12 +14,12 @@ public class GuestAuthResponse {
     @SerializedName("message")
     private String message;
 
-    public GuestData getGuestData() {
-        return guestData;
+    public AdminData getAdminData() {
+        return adminData;
     }
 
-    public void setGuestData(GuestData guestData) {
-        this.guestData = guestData;
+    public void setAdminData(AdminData adminData) {
+        this.adminData = adminData;
     }
 
     public boolean isSuccess() {

@@ -1,4 +1,4 @@
-package com.my.responses;
+package com.my.lit.responses;
 
 import com.google.gson.annotations.SerializedName;
 

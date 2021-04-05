@@ -11,9 +11,9 @@ import com.google.gson.Gson;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityCurrentLightDetailsAdminBinding;
 import com.my.lit.models.LightDataItem;
+import com.my.lit.responses.GetLightsByAreaIdResponse;
+import com.my.lit.responses.TokenErrorResponse;
 import com.my.lit.storage.SharedPreferenceManager;
-import com.my.responses.GetLightsByAreaIdResponse;
-import com.my.responses.TokenErrorResponse;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,12 +1,14 @@
-package com.my.responses;
+package com.my.lit.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.my.lit.models.AdminData;
+import com.my.lit.models.LightDataItem;
 
-public class AdminAuthResponse {
+import java.util.List;
 
-    @SerializedName("adminData")
-    private AdminData adminData;
+public class GetLightsByAreaIdResponse {
+
+    @SerializedName("data")
+    private List<LightDataItem> data;
 
     @SerializedName("success")
     private boolean success;
@@ -14,12 +16,12 @@ public class AdminAuthResponse {
     @SerializedName("message")
     private String message;
 
-    public AdminData getAdminData() {
-        return adminData;
+    public List<LightDataItem> getData() {
+        return data;
     }
 
-    public void setAdminData(AdminData adminData) {
-        this.adminData = adminData;
+    public void setData(List<LightDataItem> data) {
+        this.data = data;
     }
 
     public boolean isSuccess() {

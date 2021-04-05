@@ -1,9 +1,9 @@
 package com.my.lit.api;
 
-import com.my.responses.AdminAuthResponse;
-import com.my.responses.GetAllAreasResponse;
-import com.my.responses.GetLightsByAreaIdResponse;
-import com.my.responses.GuestAuthResponse;
+import com.my.lit.responses.AdminAuthResponse;
+import com.my.lit.responses.GetAllAreasResponse;
+import com.my.lit.responses.GetLightsByAreaIdResponse;
+import com.my.lit.responses.GuestAuthResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

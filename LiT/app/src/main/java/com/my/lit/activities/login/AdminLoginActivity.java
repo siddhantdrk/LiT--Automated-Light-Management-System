@@ -15,9 +15,9 @@ import com.my.lit.activities.dashboard.AdminDashBoardActivity;
 import com.my.lit.activities.register.GuestRegisterActivity;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityLoginBinding;
+import com.my.lit.responses.AdminAuthResponse;
+import com.my.lit.responses.AuthErrorResponse;
 import com.my.lit.storage.SharedPreferenceManager;
-import com.my.responses.AdminAuthResponse;
-import com.my.responses.AuthErrorResponse;
 
 import java.io.IOException;
 

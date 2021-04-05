@@ -1,14 +1,12 @@
-package com.my.responses;
+package com.my.lit.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.my.lit.models.LightDataItem;
+import com.my.lit.models.AuthErrorData;
 
-import java.util.List;
+public class AuthErrorResponse {
 
-public class GetLightsByAreaIdResponse {
-
-    @SerializedName("data")
-    private List<LightDataItem> data;
+    @SerializedName("authErrorData")
+    private AuthErrorData authErrorData;
 
     @SerializedName("success")
     private boolean success;
@@ -16,12 +14,12 @@ public class GetLightsByAreaIdResponse {
     @SerializedName("message")
     private String message;
 
-    public List<LightDataItem> getData() {
-        return data;
+    public AuthErrorData getAuthErrorData() {
+        return authErrorData;
     }
 
-    public void setData(List<LightDataItem> data) {
-        this.data = data;
+    public void setAuthErrorData(AuthErrorData authErrorData) {
+        this.authErrorData = authErrorData;
     }
 
     public boolean isSuccess() {
