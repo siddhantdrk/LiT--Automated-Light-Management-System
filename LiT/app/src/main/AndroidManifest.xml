@@ -22,17 +22,17 @@
         <activity android:name=".activities.ViewRoomsAdminActivity" />
         <activity android:name=".activities.LightDetailsActivity" />
         <activity android:name=".activities.register.GuestRegisterActivity"></activity>
-        <activity android:name=".activities.login.GuestLoginActivity">
+        <activity android:name=".activities.login.GuestLoginActivity"></activity>
+        <activity android:name=".activities.register.AdminRegisterActivity" />
+        <activity android:name=".activities.dashboard.GuestDashBoardActivity" />
+        <activity android:name=".activities.dashboard.AdminDashBoardActivity" />
+        <activity android:name=".activities.login.AdminLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.register.AdminRegisterActivity" />
-        <activity android:name=".activities.dashboard.GuestDashBoardActivity" />
-        <activity android:name=".activities.dashboard.AdminDashBoardActivity" />
-        <activity android:name=".activities.login.AdminLoginActivity" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.MainActivity" />
     </application>

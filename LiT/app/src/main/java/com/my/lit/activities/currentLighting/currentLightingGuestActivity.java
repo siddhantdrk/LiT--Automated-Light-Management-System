@@ -83,7 +83,7 @@ public class currentLightingGuestActivity extends AppCompatActivity implements V
     @Override
     public void onItemClick(AreaDataItem item) {
         Intent intent = new Intent(this, currentLightDetailsGuestActivity.class);
-        intent.putExtra("Lights", item.getId());
+        intent.putExtra("AreaId", item.getId());
         startActivity(intent);
     }
 }

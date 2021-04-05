@@ -35,10 +35,9 @@ public class currentLightDetailsGuestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         currentLightDetailsBinding = ActivityCurrentLightDetailsGuestBinding.inflate(LayoutInflater.from(this));
         setContentView(currentLightDetailsBinding.getRoot());
+        mProgress = new ProgressDialog(this);
+        areaId = getIntent().getStringExtra("AreaId");
         getLightDetails();
-        areaId = getIntent().getStringExtra("Lights");
-
-
     }
 
     private void getLightDetails() {

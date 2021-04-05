@@ -35,6 +35,7 @@ public class currentLightDetailsAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         currentLightDetailsAdminBinding = ActivityCurrentLightDetailsAdminBinding.inflate(LayoutInflater.from(this));
         setContentView(currentLightDetailsAdminBinding.getRoot());
+        mProgress = new ProgressDialog(this);
         getLightDetails();
     }
 
