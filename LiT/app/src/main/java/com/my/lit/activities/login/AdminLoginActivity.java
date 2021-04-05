@@ -62,8 +62,8 @@ public class AdminLoginActivity extends AppCompatActivity {
         String email = activityLoginBinding.signInEmail.getText().toString().trim();
         String password = activityLoginBinding.signInPassword.getText().toString().trim();
 
-        if(email.isEmpty()){
-            if(password.isEmpty()){
+        if(!email.isEmpty()){
+            if(!password.isEmpty()){
                 Call<AdminAuthResponse> adminLoginResponseCall = RetrofitClient.getInstance().getUserServices().adminLogin(email, password);
 
                 adminLoginResponseCall.enqueue(new Callback<AdminAuthResponse>() {

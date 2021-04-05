@@ -62,8 +62,8 @@ public class GuestLoginActivity extends AppCompatActivity {
         String email = activityLoginBinding.signInEmail.getText().toString().trim();
         String password = activityLoginBinding.signInPassword.getText().toString().trim();
 
-        if(email.isEmpty()) {
-            if (password.isEmpty()) {
+        if(!email.isEmpty()) {
+            if (!password.isEmpty()) {
                 Call<GuestAuthResponse> userLoginResponseCall = RetrofitClient.getInstance().getUserServices().userLogin(email, password);
                 userLoginResponseCall.enqueue(new Callback<GuestAuthResponse>() {
                     @Override
