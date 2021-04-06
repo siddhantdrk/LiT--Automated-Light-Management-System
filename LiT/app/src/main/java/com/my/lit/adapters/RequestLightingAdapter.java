@@ -12,19 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.my.lit.R;
+import com.my.lit.models.LightDataItem;
 import com.my.lit.models.Room;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RequestLightingAdapter  extends RecyclerView.Adapter<RequestLightingAdapter.RequestLightingAdapterViewHolder>{
-    ArrayList<String> lightNames ;
-    ArrayList<Boolean> lightStatus ;
+    List<LightDataItem> lightDataItemList ;
     Context context;
     OnItemClickListener listener;
 
-    public RequestLightingAdapter(ArrayList<String> lightNames, ArrayList<Boolean> lightStatus, Context context,OnItemClickListener listener) {
-        this.lightNames = lightNames;
-        this.lightStatus = lightStatus;
+    public RequestLightingAdapter(List<LightDataItem> lightDataItemList , Context context,OnItemClickListener listener) {
+        this.lightDataItemList = lightDataItemList;
+
         this.context = context;
         this.listener = listener;
     }
@@ -42,31 +43,25 @@ public class RequestLightingAdapter  extends RecyclerView.Adapter<RequestLightin
 
     @Override
     public int getItemCount() {
-        return lightNames.size();
+        return lightDataItemList.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull RequestLightingAdapterViewHolder holder, int position) {
 
-        holder.LightName.setText(lightNames.get(position));
-        if(lightStatus.get(position)){
+        holder.LightName.setText(lightDataItemList.get(position).getName());
+
+        if(lightDataItemList.get(position).isStatus()){
             holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.yellow_light));
             holder.LightStatus.setText("ON");
             holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
-        }
-        else{
-            holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.white));
+        }else{
             holder.LightStatus.setText("OFF");
+            holder.LightStatus.setBackgroundColor(context.getResources().getColor(R.color.white));
             holder.LightStatus.setTextColor(context.getResources().getColor(R.color.black));
-            //holder.Bulb.setImageDrawable(context.getResources().getDrawable(R.drawable.off_bulb));
             holder.Bulb.setImageResource(R.drawable.off_bulb);
         }
-        if(holder.checkBox.isChecked()){
-            holder.checkBoxCheck(lightNames.get(position),lightStatus.get(position),  listener);
-        }
-        if(!holder.checkBox.isChecked()){
-            holder.checkBoxUnCheck(lightNames.get(position),lightStatus.get(position),  listener);
-        }
+
 
 
     }
