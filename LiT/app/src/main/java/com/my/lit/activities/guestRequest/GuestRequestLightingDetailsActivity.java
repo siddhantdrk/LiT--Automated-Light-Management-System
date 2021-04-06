@@ -46,7 +46,7 @@ public class GuestRequestLightingDetailsActivity extends AppCompatActivity {
         mProgress.setCanceledOnTouchOutside(false);
         mProgress.show();
         token = "token " + SharedPreferenceManager.getInstance(this).getToken();
-        Call<GetLightsByAreaIdResponse> getLightsByAreaIdResponseCall = RetrofitClient.getInstance().getUserServices().getLightsByAreaIdAdmin(areaId, token);
+        Call<GetLightsByAreaIdResponse> getLightsByAreaIdResponseCall = RetrofitClient.getInstance().getUserServices().getLightsByAreaIdGuest(areaId, token);
         getLightsByAreaIdResponseCall.enqueue(new Callback<GetLightsByAreaIdResponse>() {
             @Override
             public void onResponse(Call<GetLightsByAreaIdResponse> call, Response<GetLightsByAreaIdResponse> response) {
