@@ -34,6 +34,8 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
     private final List<LightDataItem> lightDataItemList;
     private final Context context;
     private final int switchBtnValue = 2;
+    Handler handler = new Handler();
+    Runnable runnable;
 
     public ControlLightsAdapter(List<LightDataItem> lightDataItemList, Context context) {
         this.lightDataItemList = lightDataItemList;
@@ -69,16 +71,7 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
             @Override
             public void onClick(View view) {
                 //switch (holder.LightStatus)
-                ProgressDialog progressDialog = new ProgressDialog(context);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressDialog.setTitle("Updating...");
-                        progressDialog.setMessage("Please wait while we are updating your Light status");
-                        progressDialog.show();
-                    }
-                }, 1500);
-                progressDialog.dismiss();
+
                 if (lightDataItem.isStatus()) {
                     updateLightStatus(new UpdateLightStatus(lightDataItem.getId(), false), holder, position);
                 } else {
