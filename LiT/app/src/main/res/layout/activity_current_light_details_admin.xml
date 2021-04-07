@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activities.currentLighting.currentLightDetailsAdminActivity">
+    tools:context=".activities.currentLighting.currentLightDetailsAdminActivity"
+    android:background="#F3DCDC">
 
     <TextView
         android:id="@+id/header_lights"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#F3DCDC"
+        android:background="#FBBCB1"
         android:gravity="center_horizontal"
         android:text="LIGHTS INFORMATION"
         android:textColor="@color/black"

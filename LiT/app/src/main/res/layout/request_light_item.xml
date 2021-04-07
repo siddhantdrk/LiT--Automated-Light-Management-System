@@ -5,96 +5,103 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="1dp">
+    android:layout_marginTop="1dp"
+    android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/white">
 
-        <ImageView
-            android:id="@+id/bulb"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/bulb"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="0dp">
 
-        <TextView
-            android:id="@+id/light_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="Light 1"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/light_status"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/bulb"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/bulb"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/light_status"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="#E5F48F"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="On"
-            android:textColor="#6C5503"
-            app:layout_constraintStart_toEndOf="@+id/bulb"
-            app:layout_constraintTop_toTopOf="@+id/bulb" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:gravity="center"
-            android:text="I want this ?"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/bulb"
-            app:layout_constraintStart_toEndOf="@+id/bulb"
-            app:layout_constraintTop_toBottomOf="@+id/light_status" />
-
-        <RadioGroup
-            android:id="@+id/on_off_rd_grp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/bulb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView4">
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/on_rd_btn"
+            <TextView
+                android:id="@+id/light_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Light 1"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/light_status"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/light_status"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="#E5F48F"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="On"
-                android:textColor="@color/green" />
+                android:textColor="#6C5503"
+                app:layout_constraintStart_toEndOf="@+id/bulb"
+                app:layout_constraintTop_toTopOf="@+id/bulb" />
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/off_rd_btn"
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center"
+                android:text="I want this ?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/bulb"
+                app:layout_constraintStart_toEndOf="@+id/bulb"
+                app:layout_constraintTop_toBottomOf="@+id/light_status" />
+
+            <RadioGroup
+                android:id="@+id/on_off_rd_grp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Off"
-                android:textColor="@color/red" />
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/bulb"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView4">
 
-        </RadioGroup>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/on_rd_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="On"
+                    android:textColor="@color/green" />
 
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/off_rd_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Off"
+                    android:textColor="@color/red" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.controlLight.ControlLightDetailsAdminActivity">
+    tools:context=".activities.controlLight.ControlLightDetailsAdminActivity"
+    android:background="#F3DCDC">
 
     <TextView
         android:id="@+id/header_lights"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#F3DCDC"
+        android:background="#FBBCB1"
         android:gravity="center_horizontal"
         android:text="CONTROL LIGHTS"
         android:textColor="@color/black"
