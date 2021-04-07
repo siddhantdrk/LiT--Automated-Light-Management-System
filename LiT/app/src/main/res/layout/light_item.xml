@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="1dp"
-    android:background="@color/white">
+    android:layout_marginTop="1dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -17,7 +16,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="1dp"
         android:elevation="@dimen/cardview_compat_inset_shadow"
-        app:cardCornerRadius="@dimen/cardview_default_elevation">
+        app:strokeWidth="1dp"
+        app:strokeColor="#FBBCB1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

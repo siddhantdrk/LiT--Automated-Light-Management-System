@@ -55,7 +55,8 @@
             android:text="See User Requests"
             android:textColor="@color/black"
             app:backgroundTint="#1fbbde"
-            app:cornerRadius="16dp" />
+            app:cornerRadius="16dp"
+            android:visibility="gone"/>
 
 
         <com.google.android.material.button.MaterialButton
