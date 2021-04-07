@@ -47,7 +47,9 @@
             android:layout_weight="1"
             android:text="View Current Lightings"
             app:backgroundTint="#f29a1f"
-            app:cornerRadius="16dp" />
+            app:cornerRadius="16dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/request_lighting_btn"
@@ -57,7 +59,9 @@
             android:layout_weight="1"
             android:text="Request Lighting"
             app:backgroundTint="#1fbbde"
-            app:cornerRadius="16dp" />
+            app:cornerRadius="16dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logout_btn"
@@ -68,7 +72,9 @@
             android:text="Logout"
             android:textColor="@color/black"
             app:backgroundTint="#FF0258"
-            app:cornerRadius="16dp" />
+            app:cornerRadius="16dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"/>
 
 
     </LinearLayout>
