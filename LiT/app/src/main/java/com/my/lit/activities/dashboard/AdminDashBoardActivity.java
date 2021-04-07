@@ -22,7 +22,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAdminDashBoardBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
-
+        binding.adminName.setText(SharedPreferenceManager.getInstance(this).getName());
         binding.logoutBtn.setOnClickListener(this::onClick);
         binding.viewCurrentLightingBtn.setOnClickListener(this::onClick);
         binding.controlLightingBtn.setOnClickListener(this::onClick);

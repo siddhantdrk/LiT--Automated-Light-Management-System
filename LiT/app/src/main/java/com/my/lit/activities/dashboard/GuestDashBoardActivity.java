@@ -24,7 +24,7 @@ public class GuestDashBoardActivity extends AppCompatActivity {
         binding = ActivityGuestDashBoardBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
 
-
+        binding.userName.setText(SharedPreferenceManager.getInstance(this).getName());
         binding.logoutBtn.setOnClickListener(this::onClick);
         binding.viewCurrentLightingBtn.setOnClickListener(this::onClick);
         binding.requestLightingBtn.setOnClickListener(this::onClick);

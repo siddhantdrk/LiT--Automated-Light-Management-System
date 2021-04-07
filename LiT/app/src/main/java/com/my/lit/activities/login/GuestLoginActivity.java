@@ -73,9 +73,13 @@ public class GuestLoginActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             GuestAuthResponse guestAuthResponse = response.body();
                             SharedPreferenceManager.getInstance(GuestLoginActivity.this).saveToken(guestAuthResponse.getGuestData().getToken());
-                            startActivity(new Intent(GuestLoginActivity.this, GuestDashBoardActivity.class));
+                            SharedPreferenceManager.getInstance(GuestLoginActivity.this).saveName(guestAuthResponse.getGuestData().getUser().getFullName());
+                            Intent intent = new Intent(GuestLoginActivity.this, GuestDashBoardActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                    Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
                             Toast.makeText(GuestLoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
-                            finish();
                         } else {
                             try {
                                 AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);

@@ -46,4 +46,14 @@ public class SharedPreferenceManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         sharedPreferences.edit().putBoolean("isAdmin", isAdmin).apply();
     }
+
+    public void saveName(String name) {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("name", name).apply();
+    }
+
+    public String getName() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString("name", null);
+    }
 }

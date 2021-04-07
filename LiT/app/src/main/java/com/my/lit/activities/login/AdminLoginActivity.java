@@ -68,9 +68,13 @@ public class AdminLoginActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             AdminAuthResponse adminLoginResponse = response.body();
                             SharedPreferenceManager.getInstance(AdminLoginActivity.this).saveToken(adminLoginResponse.getAdminData().getToken());
-                            startActivity(new Intent(AdminLoginActivity.this, AdminDashBoardActivity.class));
+                            SharedPreferenceManager.getInstance(AdminLoginActivity.this).saveName(adminLoginResponse.getAdminData().getAdmin().getFullName());
+                            Intent intent = new Intent(AdminLoginActivity.this, AdminDashBoardActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                    Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
                             Toast.makeText(AdminLoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
-                            finish();
                         } else {
                             try {
                                 AuthErrorResponse authErrorResponse = new Gson().fromJson(response.errorBody().string(), AuthErrorResponse.class);
