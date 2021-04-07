@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.my.lit.R;
 import com.my.lit.activities.dashboard.AdminDashBoardActivity;
-import com.my.lit.activities.register.GuestRegisterActivity;
 import com.my.lit.api.RetrofitClient;
 import com.my.lit.databinding.ActivityLoginBinding;
 import com.my.lit.responses.AdminAuthResponse;
@@ -36,19 +35,16 @@ public class AdminLoginActivity extends AppCompatActivity {
         activityLoginBinding = ActivityLoginBinding.inflate(LayoutInflater.from(this));
         setContentView(activityLoginBinding.getRoot());
         mProgress = new ProgressDialog(this);
-        activityLoginBinding.SignUp.setOnClickListener(this::onClick);
         activityLoginBinding.LogInBtn.setOnClickListener(this::onClick);
+        activityLoginBinding.dontHaveAacLl.setVisibility(View.GONE);
 
     }
 
     private void onClick(View view) {
         switch (view.getId()) {
-            case R.id.SignUp:
-                Intent intent = new Intent(AdminLoginActivity.this, GuestRegisterActivity.class);
-                view.getContext().startActivity(intent);
-                finish();
             case R.id.LogInBtn:
                 login();
+                break;
         }
     }
 
