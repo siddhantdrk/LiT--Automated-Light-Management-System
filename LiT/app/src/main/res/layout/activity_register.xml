@@ -20,6 +20,10 @@
             android:layout_marginTop="48dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
+            app:endIconMode="clear_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -36,8 +40,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginTop="16dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp">
 
@@ -51,6 +60,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
+            app:endIconMode="clear_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -67,6 +80,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -78,12 +94,15 @@
                 android:id="@+id/signUp_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password(at least 8 character)"
+                android:hint="Password(at least 6 character)"
                 android:textSize="16sp"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:background="#FBBCB1"
         android:gravity="center"
-        android:text="ROOMS INFORMATION"
+        android:text="AREAS INFORMATION"
         android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"

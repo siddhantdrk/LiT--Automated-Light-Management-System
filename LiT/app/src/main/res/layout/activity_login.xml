@@ -18,13 +18,15 @@
             android:layout_marginTop="32dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_marginStart="16dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            app:boxStrokeWidth="0dp"
-            android:background="@null">
+            app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/signIn_email"
@@ -36,6 +38,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
