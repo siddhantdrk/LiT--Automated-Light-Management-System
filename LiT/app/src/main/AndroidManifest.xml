@@ -13,14 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiT"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.guestRequest.GuestRequestLightingDetailsActivity"></activity>
+        <activity android:name=".activities.guestRequestLighting.GuestRequestLightingDetailsActivity"></activity>
         <activity android:name=".activities.controlLight.ControlLightDetailsAdminActivity" />
         <activity android:name=".activities.currentLighting.currentLightDetailsAdminActivity" />
         <activity android:name=".activities.currentLighting.currentLightDetailsGuestActivity" />
         <activity android:name=".activities.currentLighting.currentLightingAdminActivity" />
         <activity android:name=".activities.currentLighting.currentLightingGuestActivity" />
         <activity android:name=".activities.controlLight.ControlsLightAdminActivity" />
-        <activity android:name=".activities.guestRequest.GuestRequestLightingActivity" />
+        <activity android:name=".activities.guestRequestLighting.GuestRequestLightingActivity" />
         <activity android:name=".activities.register.GuestRegisterActivity" />
         <activity android:name=".activities.login.GuestLoginActivity">
             <intent-filter>

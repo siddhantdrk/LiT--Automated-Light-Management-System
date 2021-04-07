@@ -1,4 +1,4 @@
-package com.my.lit.activities.guestRequest;
+package com.my.lit.activities.guestRequestLighting;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
