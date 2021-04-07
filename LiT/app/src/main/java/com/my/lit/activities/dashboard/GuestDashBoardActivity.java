@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.my.lit.R;
 import com.my.lit.activities.WelcomeActivity;
 import com.my.lit.activities.currentLighting.currentLightingGuestActivity;
-import com.my.lit.activities.guestRequest.GuestRequestLightingActivity;
+import com.my.lit.activities.guestRequestLighting.GuestRequestLightingActivity;
 import com.my.lit.databinding.ActivityGuestDashBoardBinding;
 import com.my.lit.storage.SharedPreferenceManager;
 
