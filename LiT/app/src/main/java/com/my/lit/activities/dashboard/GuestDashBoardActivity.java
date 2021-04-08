@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,6 +36,7 @@ public class GuestDashBoardActivity extends AppCompatActivity {
             case R.id.logout_btn:
                 SharedPreferenceManager.getInstance(this).clear();
                 startActivity(new Intent(this, WelcomeActivity.class));
+                Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
 
