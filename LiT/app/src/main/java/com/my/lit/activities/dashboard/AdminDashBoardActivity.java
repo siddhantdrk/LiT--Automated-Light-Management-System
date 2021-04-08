@@ -47,12 +47,8 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         binding.viewCurrentLightingBtn.setOnClickListener(this::onClick);
         binding.controlLightingBtn.setOnClickListener(this::onClick);
         binding.resetCurrentLightBtn.setOnClickListener(this::onClick);
-
-        if (SharedPreferenceManager.getInstance(this).isAdmin()) {
-            if (!SharedPreferenceManager.getInstance(this).getToken().isEmpty()) {
-                scheduleJob();
-            }
-        }
+        binding.startJobSchedulerBtn.setOnClickListener(this::onClick);
+        binding.stopJobSchedulerBtn.setOnClickListener(this::onClick);
     }
 
     private void onClick(View view) {
@@ -73,6 +69,16 @@ public class AdminDashBoardActivity extends AppCompatActivity {
                 break;
             case R.id.reset_current_light_btn:
                 resetCurrentLighting();
+                break;
+            case R.id.stop_job_scheduler_btn:
+                cancelJob();
+                break;
+            case R.id.start_job_scheduler_btn:
+                if (SharedPreferenceManager.getInstance(this).isAdmin()) {
+                    if (!SharedPreferenceManager.getInstance(this).getToken().isEmpty()) {
+                        scheduleJob();
+                    }
+                }
                 break;
         }
     }
@@ -115,7 +121,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
                 .setRequiresCharging(true)
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
                 .setPersisted(true)
-                .setPeriodic(3000)
+                .setPeriodic(60 * 60 * 1000)
                 .build();
         JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = scheduler.schedule(info);
@@ -126,7 +132,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         }
     }
 
-    public void cancelJob(View v) {
+    public void cancelJob() {
         JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         scheduler.cancel(123);
         Log.d(TAG, "Job cancelled");
