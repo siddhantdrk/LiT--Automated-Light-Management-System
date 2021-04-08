@@ -37,7 +37,7 @@ public class RetrofitClient {
         return retrofitClient;
     }
 
-    public UserServices getUserServices() {
-        return retrofit.create(UserServices.class);
+    public ApiServices getUserServices() {
+        return retrofit.create(ApiServices.class);
     }
 }

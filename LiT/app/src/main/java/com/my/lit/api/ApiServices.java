@@ -6,6 +6,7 @@ import com.my.lit.responses.GetAllAreasResponse;
 import com.my.lit.responses.GetLightsByAreaIdResponse;
 import com.my.lit.responses.GuestAuthResponse;
 import com.my.lit.responses.RequestLightResponse;
+import com.my.lit.responses.ResetLightResponse;
 import com.my.lit.responses.UpdateLightStatusResponse;
 
 import retrofit2.Call;
@@ -18,7 +19,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface
-UserServices {
+ApiServices {
 
     @FormUrlEncoded
     @POST("api/v1/user/signup")
@@ -75,6 +76,11 @@ UserServices {
     @POST("api/v1/user/request/bulb")
     Call<RequestLightResponse> requestLight(
             @Body UpdateLightStatus update,
+            @Header("Authorization") String token
+    );
+
+    @POST("api/v1/admin/reset/bulb")
+    Call<ResetLightResponse> resetLights(
             @Header("Authorization") String token
     );
 }

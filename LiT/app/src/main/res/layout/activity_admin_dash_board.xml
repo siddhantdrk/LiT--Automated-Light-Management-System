@@ -63,18 +63,18 @@
             app:strokeColor="@color/black"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/see_user_request_btn"
+            android:id="@+id/reset_current_light_btn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="See User Requests"
+            android:text="Reset current Lighting"
             android:textColor="@color/black"
             app:backgroundTint="#1fbbde"
             app:cornerRadius="16dp"
             app:strokeWidth="1dp"
             app:strokeColor="@color/black"
-            android:visibility="gone"/>
+            android:visibility="visible" />
 
 
         <com.google.android.material.button.MaterialButton
