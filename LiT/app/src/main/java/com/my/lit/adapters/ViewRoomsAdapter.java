@@ -76,7 +76,10 @@ public class ViewRoomsAdapter extends RecyclerView.Adapter<ViewRoomsAdapter.View
         void onItemClick(AreaDataItem item);
     }
 
-
+    public void filterRooms(List<AreaDataItem> filteredList) {
+        this.areaDataItemList = filteredList;
+        notifyDataSetChanged();
+    }
 }
 
 

@@ -1,8 +1,6 @@
 package com.my.lit.adapters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdapter.ViewHolder> {
-    private final List<LightDataItem> lightDataItemList;
+    private List<LightDataItem> lightDataItemList;
     private final Context context;
-    private final int switchBtnValue = 2;
-    Handler handler = new Handler();
-    Runnable runnable;
 
     public ControlLightsAdapter(List<LightDataItem> lightDataItemList, Context context) {
         this.lightDataItemList = lightDataItemList;
@@ -141,8 +136,13 @@ public class ControlLightsAdapter extends RecyclerView.Adapter<ControlLightsAdap
             LightStatus = itemView.findViewById(R.id.light_status);
             Bulb = itemView.findViewById(R.id.bulb);
             switchBtn = itemView.findViewById(R.id.switch_btn);
-            impsOnValue=itemView.findViewById(R.id.impressionOnValue);
-            impsOffValue=itemView.findViewById(R.id.impressionOffValue);
+            impsOnValue = itemView.findViewById(R.id.impressionOnValue);
+            impsOffValue = itemView.findViewById(R.id.impressionOffValue);
         }
+    }
+
+    public void filterLights(List<LightDataItem> filteredList) {
+        this.lightDataItemList = filteredList;
+        notifyDataSetChanged();
     }
 }

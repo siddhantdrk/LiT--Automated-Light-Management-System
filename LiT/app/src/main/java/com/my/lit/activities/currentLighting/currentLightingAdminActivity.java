@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.my.lit.responses.TokenErrorResponse;
 import com.my.lit.storage.SharedPreferenceManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,6 +31,7 @@ public class currentLightingAdminActivity extends AppCompatActivity implements V
     private ActivityCurrentLightingAdminBinding currentLightingAdminBinding;
     private List<AreaDataItem> areaDataItemList;
     private ProgressDialog mProgress;
+    private ViewRoomsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,44 @@ public class currentLightingAdminActivity extends AppCompatActivity implements V
         setContentView(currentLightingAdminBinding.getRoot());
         mProgress = new ProgressDialog(this);
         getAllAreas();
+        searchSetUp();
+    }
+
+    private void searchSetUp() {
+        currentLightingAdminBinding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                filter(s);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (s.isEmpty()) {
+                    adapter.filterRooms(areaDataItemList);
+                } else {
+                    filter(s);
+                }
+                return true;
+            }
+        });
+    }
+
+    private void filter(String s) {
+        List<AreaDataItem> filteredAreaDataItemList = new ArrayList<>();
+        for (AreaDataItem areaDataItem : areaDataItemList) {
+            if (areaDataItem.getName().toLowerCase().contains(s.toLowerCase())) {
+                filteredAreaDataItemList.add(areaDataItem);
+            }
+        }
+        if (filteredAreaDataItemList.size() == 0) {
+            Toast.makeText(this, "Sorry!! No data Found", Toast.LENGTH_SHORT).show();
+        }
+        adapter.filterRooms(filteredAreaDataItemList);
     }
 
     private void setupRecyclerView(List<AreaDataItem> areaDataItemList) {
-        ViewRoomsAdapter adapter = new ViewRoomsAdapter(areaDataItemList, this);
+        adapter = new ViewRoomsAdapter(areaDataItemList, this);
         currentLightingAdminBinding.viewLightsAdminRv.setLayoutManager(new LinearLayoutManager(this));
         currentLightingAdminBinding.viewLightsAdminRv.setAdapter(adapter);
     }

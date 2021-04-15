@@ -16,7 +16,7 @@ import com.my.lit.models.LightDataItem;
 import java.util.List;
 
 public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.ViewHolder> {
-    private final List<LightDataItem> lightDataItemList;
+    private List<LightDataItem> lightDataItemList;
     Context context;
 
     public ViewLightsAdapter(List<LightDataItem> lightDataItemList, Context context) {
@@ -68,5 +68,10 @@ public class ViewLightsAdapter extends RecyclerView.Adapter<ViewLightsAdapter.Vi
             LightStatus = itemView.findViewById(R.id.light_status);
             Bulb = itemView.findViewById(R.id.bulb);
         }
+    }
+
+    public void filterLights(List<LightDataItem> filteredList) {
+        this.lightDataItemList = filteredList;
+        notifyDataSetChanged();
     }
 }

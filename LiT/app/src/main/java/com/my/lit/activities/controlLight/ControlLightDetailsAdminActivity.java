@@ -3,6 +3,7 @@ package com.my.lit.activities.controlLight;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.my.lit.responses.TokenErrorResponse;
 import com.my.lit.storage.SharedPreferenceManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,6 +30,7 @@ public class ControlLightDetailsAdminActivity extends AppCompatActivity {
     private ActivityControlLightDetailsAdminBinding controlLightDetailsAdminBinding;
     private List<LightDataItem> lightDataItemList;
     private ProgressDialog mProgress;
+    private ControlLightsAdapter adapter;
     private String areaId;
     private String token;
 
@@ -39,6 +42,40 @@ public class ControlLightDetailsAdminActivity extends AppCompatActivity {
         mProgress = new ProgressDialog(this);
         areaId = getIntent().getStringExtra("AreaId");
         getLightDetails();
+        searchSetUp();
+    }
+
+    private void searchSetUp() {
+        controlLightDetailsAdminBinding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                filter(s);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (s.isEmpty()) {
+                    adapter.filterLights(lightDataItemList);
+                } else {
+                    filter(s);
+                }
+                return true;
+            }
+        });
+    }
+
+    private void filter(String s) {
+        List<LightDataItem> filteredLightDataItemList = new ArrayList<>();
+        for (LightDataItem lightDataItem : lightDataItemList) {
+            if (lightDataItem.getName().toLowerCase().contains(s.toLowerCase())) {
+                filteredLightDataItemList.add(lightDataItem);
+            }
+        }
+        if (filteredLightDataItemList.size() == 0) {
+            Toast.makeText(this, "Sorry!! No data Found", Toast.LENGTH_SHORT).show();
+        }
+        adapter.filterLights(filteredLightDataItemList);
     }
 
     private void getLightDetails() {
@@ -75,7 +112,7 @@ public class ControlLightDetailsAdminActivity extends AppCompatActivity {
     }
 
     private void setData() {
-        ControlLightsAdapter adapter = new ControlLightsAdapter(lightDataItemList, this);
+        adapter = new ControlLightsAdapter(lightDataItemList, this);
         controlLightDetailsAdminBinding.controlLightsDetailsRv.setAdapter(adapter);
     }
 }

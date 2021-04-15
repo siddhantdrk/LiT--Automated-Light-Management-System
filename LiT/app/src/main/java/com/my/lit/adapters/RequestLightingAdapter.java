@@ -114,6 +114,11 @@ public class RequestLightingAdapter  extends RecyclerView.Adapter<RequestLightin
             onOffRdGrp = itemView.findViewById(R.id.on_off_rd_grp);
         }
     }
+
+    public void filterLights(List<LightDataItem> filteredList) {
+        this.lightDataItemList = filteredList;
+        notifyDataSetChanged();
+    }
 }
 
 
