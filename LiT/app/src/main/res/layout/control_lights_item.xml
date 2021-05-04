@@ -108,12 +108,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
+                        android:textColor="@color/black"
                         android:text="Impressions-ON - " />
 
                     <TextView
                         android:id="@+id/impressionOnValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="0" />
                 </LinearLayout>
 
@@ -129,12 +131,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
+                        android:textColor="@color/black"
                         android:text="Impressions-OFF - " />
 
                     <TextView
                         android:id="@+id/impressionOffValue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         android:text="0" />
                 </LinearLayout>
             </LinearLayout>

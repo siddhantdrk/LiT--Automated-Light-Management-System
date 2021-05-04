@@ -126,8 +126,10 @@ public class AdminDashBoardActivity extends AppCompatActivity {
         JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         int resultCode = scheduler.schedule(info);
         if (resultCode == JobScheduler.RESULT_SUCCESS) {
+            Toast.makeText(this, "Per Hour API Job Scheduling Started", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "Job scheduled");
         } else {
+            Toast.makeText(this, "Oops !! Something went wrong.", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "Job scheduling failed");
         }
     }
@@ -135,6 +137,7 @@ public class AdminDashBoardActivity extends AppCompatActivity {
     public void cancelJob() {
         JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         scheduler.cancel(123);
+        Toast.makeText(this, "Stopped per Hour API Job Scheduling", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Job cancelled");
     }
 }
