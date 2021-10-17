@@ -27,6 +27,16 @@ public class WelcomeActivity extends AppCompatActivity {
         welcomeBinding.proceedGuestBtn.setOnClickListener(this::onClick);
     }
 
+    private void onClick(View view) {
+        if (view.getId() == R.id.proceed_admin_btn) {
+            startActivity(new Intent(WelcomeActivity.this, AdminLoginActivity.class));
+            SharedPreferenceManager.getInstance(this).setAdmin(true);
+        } else if (view.getId() == R.id.proceed_guest_btn) {
+            startActivity(new Intent(WelcomeActivity.this, GuestLoginActivity.class));
+            SharedPreferenceManager.getInstance(this).setAdmin(false);
+        }
+    }
+
     private void checkIfUserExists() {
         if (SharedPreferenceManager.getInstance(this).getToken() != null) {
             if (SharedPreferenceManager.getInstance(this).isAdmin())
@@ -36,19 +46,6 @@ public class WelcomeActivity extends AppCompatActivity {
             finish();
         } else {
             setContentView(welcomeBinding.getRoot());
-        }
-    }
-
-    private void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.proceed_admin_btn:
-                startActivity(new Intent(WelcomeActivity.this, AdminLoginActivity.class));
-                SharedPreferenceManager.getInstance(this).setAdmin(true);
-                break;
-            case R.id.proceed_guest_btn:
-                startActivity(new Intent(WelcomeActivity.this, GuestLoginActivity.class));
-                SharedPreferenceManager.getInstance(this).setAdmin(false);
-                break;
         }
     }
 }
